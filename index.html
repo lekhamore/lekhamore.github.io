@@ -1018,6 +1018,23 @@
         min-height: 430px;
       }
     }
+    /* Profile image portrait fix */
+.about-wrap {
+  grid-template-columns: minmax(260px, 0.68fr) minmax(0, 1.32fr) !important;
+}
+
+.portrait {
+  min-height: 620px !important;
+  aspect-ratio: 3 / 4 !important;
+  background-position: center 24% !important;
+}
+
+@media (max-width: 720px) {
+  .portrait {
+    min-height: 520px !important;
+    aspect-ratio: 3 / 4 !important;
+  }
+}
   </style>
 </head>
 <body>
