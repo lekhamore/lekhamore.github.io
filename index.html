@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lekha More | Architecture Portfolio</title>
+  <meta name="description" content="Architecture portfolio of Lekha More, M.Arch graduate, designer, and researcher working across ecological urbanism, adaptive reuse, and spatial storytelling." />
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --ink: #171412;
+      --muted: #746b61;
+      --line: rgba(23, 20, 18, 0.16);
+      --soft: rgba(255, 255, 255, 0.48);
+      --card: rgba(255, 252, 247, 0.72);
+      --accent: #8e4f36;
+      --accent-2: #1e3a46;
+      --night: #121a24;
+      --gold: #e6b56d;
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --shadow: 0 20px 70px rgba(35, 28, 22, 0.11);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(230, 181, 109, 0.28), transparent 28%),
+        radial-gradient(circle at 80% 8%, rgba(30, 58, 70, 0.16), transparent 30%),
+        linear-gradient(145deg, #f8f2e8 0%, var(--bg) 42%, #eee3d6 100%);
+      color: var(--ink);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.33;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black 0%, transparent 82%);
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .site-shell {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(244, 239, 232, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: grid;
+      gap: 2px;
+      letter-spacing: -0.03em;
+    }
+
+    .brand strong {
+      font-size: 1.08rem;
+      line-height: 1;
+    }
+
+    .brand span {
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 220ms ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(23, 20, 18, 0.22);
+      border-radius: 999px;
+      padding: 11px 17px;
+      font-weight: 650;
+      font-size: 0.92rem;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(35, 28, 22, 0.12);
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #fffaf3;
+      border-color: var(--ink);
+    }
+
+    .hero {
+      padding: 78px 0 34px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+      min-height: calc(100vh - 74px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-2);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--accent-2);
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: clamp(3.3rem, 8vw, 7.8rem);
+      line-height: 0.87;
+      letter-spacing: -0.08em;
+      max-width: 780px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      max-width: 630px;
+      margin: 28px 0;
+      color: #4e463e;
+      font-size: clamp(1.04rem, 2vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 600px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--night);
+      box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(18, 26, 36, 0.2), rgba(18, 26, 36, 0.86)),
+        url("assets/hero-project.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.88;
+      z-index: -2;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 8%;
+      border: 1px solid rgba(255, 244, 226, 0.36);
+      border-radius: 80% 30% 72% 36%;
+      transform: rotate(-9deg);
+      z-index: -1;
+    }
+
+    .diagram-lines {
+      position: absolute;
+      inset: 0;
+      opacity: 0.55;
+      background-image:
+        linear-gradient(115deg, transparent 0 38%, rgba(230, 181, 109, 0.55) 38.2% 38.45%, transparent 38.7%),
+        linear-gradient(74deg, transparent 0 54%, rgba(255, 255, 255, 0.38) 54.2% 54.35%, transparent 54.6%),
+        radial-gradient(circle at 60% 18%, rgba(230, 181, 109, 0.6), transparent 13%);
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(248, 242, 232, 0.13);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff8ec;
+      backdrop-filter: blur(20px);
+    }
+
+    .hero-caption small {
+      color: rgba(255, 248, 236, 0.68);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 800;
+    }
+
+    .hero-caption h2 {
+      margin-top: 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .section {
+      padding: 92px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 0.96;
+    }
+
+    .section-header p {
+      max-width: 450px;
+      color: var(--muted);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+    }
+
+    .project-card {
+      grid-column: span 6;
+      min-height: 430px;
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid rgba(23, 20, 18, 0.12);
+      box-shadow: 0 18px 50px rgba(35, 28, 22, 0.08);
+    }
+
+    .project-card.large {
+      grid-column: span 8;
+      min-height: 500px;
+    }
+
+    .project-card.tall {
+      grid-column: span 4;
+      min-height: 500px;
+    }
+
+    .project-image {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(23, 20, 18, 0.88), rgba(23, 20, 18, 0.16), rgba(23, 20, 18, 0.02)),
+        var(--image, linear-gradient(135deg, #283a40, #9b6a4d));
+      background-size: cover;
+      background-position: center;
+      transition: transform 520ms ease;
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.045);
+    }
+
+    .project-meta {
+      position: absolute;
+      inset: auto 20px 20px 20px;
+      color: #fff8ec;
+      z-index: 2;
+    }
+
+    .project-meta .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      border: 1px solid rgba(255, 248, 236, 0.3);
+      background: rgba(255, 248, 236, 0.1);
+      backdrop-filter: blur(16px);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.73rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .project-meta h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.045em;
+      font-size: clamp(1.8rem, 3.2vw, 3.1rem);
+      line-height: 0.96;
+      margin-bottom: 12px;
+    }
+
+    .project-meta p {
+      color: rgba(255, 248, 236, 0.78);
+      max-width: 560px;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .portrait-card,
+    .text-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(23, 20, 18, 0.12);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .portrait-card {
+      min-height: 520px;
+      background:
+        linear-gradient(to top, rgba(23, 20, 18, 0.56), rgba(23, 20, 18, 0.1)),
+        url("assets/profile.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: end;
+      padding: 22px;
+      color: #fff8ec;
+    }
+
+    .portrait-note {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(18, 26, 36, 0.42);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(18px);
+    }
+
+    .text-card {
+      padding: clamp(26px, 5vw, 56px);
+      display: grid;
+      align-content: center;
+    }
+
+    .text-card p {
+      color: #4e463e;
+      font-size: 1.06rem;
+      margin-bottom: 18px;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .skill-cloud span {
+      border: 1px solid rgba(23, 20, 18, 0.14);
+      background: rgba(255, 255, 255, 0.45);
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #453c35;
+      font-size: 0.9rem;
+    }
+
+    .resume-strip {
+      border-radius: var(--radius-lg);
+      background: var(--ink);
+      color: #fff8ec;
+      padding: clamp(26px, 5vw, 48px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resume-strip::before {
+      content: "";
+      position: absolute;
+      inset: -20% 48% -20% auto;
+      width: 520px;
+      border: 1px solid rgba(230, 181, 109, 0.3);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+
+    .resume-strip h2,
+    .resume-strip p,
+    .resume-strip a {
+      position: relative;
+      z-index: 1;
+    }
+
+    .resume-strip p {
+      color: rgba(255, 248, 236, 0.72);
+      max-width: 720px;
+      margin-top: 10px;
+    }
+
+    .resume-strip .btn {
+      background: #fff8ec;
+      color: var(--ink);
+      border-color: #fff8ec;
+      white-space: nowrap;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .contact-card {
+      border: 1px solid rgba(23, 20, 18, 0.12);
+      background: rgba(255, 255, 255, 0.38);
+      border-radius: 22px;
+      padding: 20px;
+      min-height: 130px;
+      display: grid;
+      align-content: space-between;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .contact-card small {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 850;
+    }
+
+    .contact-card strong {
+      margin-top: 20px;
+      font-size: 1.05rem;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 42px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 720ms ease, transform 720ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .about-panel,
+      .resume-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+        min-height: auto;
+      }
+
+      .hero-card {
+        min-height: 520px;
+      }
+
+      .project-card,
+      .project-card.large,
+      .project-card.tall {
+        grid-column: span 12;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .site-shell {
+        width: min(100% - 24px, 1180px);
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .nav-links a:not(.btn) {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: clamp(3.1rem, 17vw, 5rem);
+      }
+
+      .hero-card {
+        min-height: 430px;
+      }
+
+      .section {
+        padding: 64px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="site-shell nav-inner">
+      <a href="#top" class="brand" aria-label="Go to home">
+        <strong>Lekha More</strong>
+        <span>Architecture Portfolio</span>
+      </a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="site-shell">
+    <section class="hero">
+      <div class="hero-text reveal">
+        <div class="eyebrow">M.Arch, Arizona State University</div>
+        <h1>Designing spaces where <em>climate</em>, memory, and people can breathe.</h1>
+        <p class="hero-copy">
+          I am an architectural designer working across ecological urbanism, adaptive reuse, housing, and environmental storytelling. My work explores how buildings can become filters, thresholds, and soft systems of care.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#work">View Selected Work</a>
+          <a class="btn" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+          <a class="btn" href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer">Full PDF Portfolio</a>
+        </div>
+      </div>
+
+      <aside class="hero-card reveal" aria-label="Featured project image">
+        <div class="diagram-lines"></div>
+        <div class="hero-caption">
+          <small>Featured Thesis Work</small>
+          <h2>Ecological Cooling Shores</h2>
+        </div>
+      </aside>
+    </section>
+
+    <section id="work" class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="section-kicker">Selected Work</div>
+          <h2>Projects as climate arguments, spatial systems, and lived experiences.</h2>
+        </div>
+        <p>
+          Replace these placeholder images with exported portfolio spreads, diagrams, renders, and professional drawings. Keep each project page short, image-led, and readable for firms.
+        </p>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card large reveal">
+          <div class="project-image" style="--image: linear-gradient(135deg, rgba(18,26,36,0.7), rgba(142,79,54,0.4)), url('assets/project-ecs.jpg');"></div>
+          <div class="project-meta">
+            <div class="tag-row">
+              <span class="tag">Thesis</span>
+              <span class="tag">Urban Ecology</span>
+              <span class="tag">Nocturnal Design</span>
+            </div>
+            <h3>Ecological Cooling Shores</h3>
+            <p>A nocturnal architectural framework for the Salt River edge, designed as an inhabitable filter that invites cool air while protecting dark ecological corridors.</p>
+          </div>
+        </article>
+
+        <article class="project-card tall reveal">
+          <div class="project-image" style="--image: linear-gradient(135deg, #22313a, #c08b64);"></div>
+          <div class="project-meta">
+            <div class="tag-row">
+              <span class="tag">Adaptive Reuse</span>
+              <span class="tag">Housing</span>
+            </div>
+            <h3>Colony_518</h3>
+            <p>A floating, high-density ecosystem community built through adaptive reuse, water revival, and layered communal thresholds.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-image" style="--image: linear-gradient(135deg, #dac4a8, #7d5d45);"></div>
+          <div class="project-meta">
+            <div class="tag-row">
+              <span class="tag">Professional</span>
+              <span class="tag">Residential</span>
+            </div>
+            <h3>High-Rise Residential Work</h3>
+            <p>Selected professional practice from India, including residential planning, facade thinking, coordination, and design development under a principal architect.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-image" style="--image: linear-gradient(135deg, #1e3a46, #b98a5f);"></div>
+          <div class="project-meta">
+            <div class="tag-row">
+              <span class="tag">Environmental</span>
+              <span class="tag">Research</span>
+            </div>
+            <h3>Desert Facade Systems</h3>
+            <p>Research into shade, vertical fins, sloped facades, airflow, and thermal resilience for desert architectural envelopes.</p>
+          </div>
+        </article>
+
+        <article class="project-card tall reveal">
+          <div class="project-image" style="--image: linear-gradient(135deg, #f0d9b5, #293f4a);"></div>
+          <div class="project-meta">
+            <div class="tag-row">
+              <span class="tag">UI/UX</span>
+              <span class="tag">Wellness</span>
+            </div>
+            <h3>Quick Fix Mind</h3>
+            <p>A mood-based micro-intervention app exploring emotional reset, reflection, and accessible design through human-centered flows.</p>
+          </div>
+        </article>
+
+        <article class="project-card large reveal">
+          <div class="project-image" style="--image: linear-gradient(135deg, #efe4d5, #8e4f36);"></div>
+          <div class="project-meta">
+            <div class="tag-row">
+              <span class="tag">Technical</span>
+              <span class="tag">Revit</span>
+              <span class="tag">Drawings</span>
+            </div>
+            <h3>Selected Technical Work</h3>
+            <p>Plans, sections, details, and diagrammatic systems showing design intent, coordination, and growing Revit documentation skills.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="about-panel">
+        <div class="portrait-card reveal">
+          <div class="portrait-note">
+            <strong>Phoenix based, globally formed.</strong>
+            <p>Originally from Mumbai, currently building a design practice rooted in climate, community, and careful architectural storytelling.</p>
+          </div>
+        </div>
+
+        <div class="text-card reveal">
+          <div class="section-kicker">About</div>
+          <h2>A designer interested in thresholds, systems, and places that hold people well.</h2>
+          <p>
+            My graduate work at Arizona State University focused on ecological urbanism, desert climate, adaptive reuse, and design narratives that connect environmental performance with human experience.
+          </p>
+          <p>
+            I bring professional experience from India, where I worked directly under a principal architect on high-rise residential design, along with graduate-level work in architectural research, visualization, Revit, and environmental design thinking.
+          </p>
+          <div class="skill-cloud" aria-label="Skills and software">
+            <span>Revit</span>
+            <span>Rhino</span>
+            <span>Adobe Illustrator</span>
+            <span>Photoshop</span>
+            <span>InDesign</span>
+            <span>Architectural Diagrams</span>
+            <span>Adaptive Reuse</span>
+            <span>Environmental Design</span>
+            <span>Research</span>
+            <span>Presentation Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="section">
+      <div class="resume-strip reveal">
+        <div>
+          <div class="section-kicker">Resume + Portfolio</div>
+          <h2>Available for architectural designer, junior designer, job captain support, and design assistant roles.</h2>
+          <p>
+            Download my resume and full PDF portfolio, or contact me directly for project samples, references, and additional work.
+          </p>
+        </div>
+        <a class="btn" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-header reveal">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2>Let’s talk about architecture, climate, and meaningful work.</h2>
+        </div>
+        <p>Update these links with your real email, LinkedIn, Behance, portfolio PDF, and phone number if you want it visible.</p>
+      </div>
+
+      <div class="contact-grid reveal">
+        <a class="contact-card" href="mailto:your-email@example.com">
+          <small>Email</small>
+          <strong>your-email@example.com</strong>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+          <small>LinkedIn</small>
+          <strong>linkedin.com/in/yourname</strong>
+        </a>
+        <a class="contact-card" href="https://www.behance.net/" target="_blank" rel="noreferrer">
+          <small>Behance</small>
+          <strong>behance.net/yourname</strong>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site-shell footer-inner">
+      <span>© <span id="year"></span> Lekha More. Architecture Portfolio.</span>
+      <span>Designed as a lightweight GitHub Pages site.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
