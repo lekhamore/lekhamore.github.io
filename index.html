@@ -42,6 +42,91 @@
       scroll-behavior: smooth;
     }
 
+const projects = {
+  ecs: {
+    title: "ECS",
+    category: "Ecological Cooling Shores",
+    description:
+      "A nocturnal architectural framework along Phoenix’s Salt River, designed as a cooling, filtering, and light-conscious edge condition.",
+    images: [
+      "assets/projects/ecs/01.jpg",
+      "assets/projects/ecs/02.jpg",
+      "assets/projects/ecs/03.jpg",
+      "assets/projects/ecs/04.jpg"
+    ]
+  },
+
+  colony518: {
+    title: "Colony_518",
+    category: "Adaptive Reuse, Sustainable Housing",
+    description:
+      "A floating adaptive reuse structure developed above a commercial base, centered on sustainability, water revival, community, and self-sustaining ecosystems.",
+    images: [
+      "assets/projects/colony-518/01.jpg",
+      "assets/projects/colony-518/02.jpg",
+      "assets/projects/colony-518/03.jpg",
+      "assets/projects/colony-518/04.jpg"
+    ]
+  },
+
+  adaptiveReuse: {
+    title: "Adaptive Reuse",
+    category: "Architecture, Urban Transformation",
+    description:
+      "A design study exploring how existing commercial or historic structures can become platforms for new housing, public life, and environmental resilience.",
+    images: [
+      "assets/projects/adaptive-reuse/01.jpg",
+      "assets/projects/adaptive-reuse/02.jpg",
+      "assets/projects/adaptive-reuse/03.jpg"
+    ]
+  }
+};
+
+const workCards = document.querySelectorAll(".work-card");
+const modal = document.getElementById("projectModal");
+const closeModal = document.getElementById("closeModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalCategory = document.getElementById("modalCategory");
+const modalDescription = document.getElementById("modalDescription");
+const projectGallery = document.getElementById("projectGallery");
+
+workCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const projectKey = card.dataset.project;
+    const project = projects[projectKey];
+
+    if (!project) return;
+
+    modalTitle.textContent = project.title;
+    modalCategory.textContent = project.category;
+    modalDescription.textContent = project.description;
+
+    projectGallery.innerHTML = "";
+
+    project.images.forEach((imageSrc) => {
+      const img = document.createElement("img");
+      img.src = imageSrc;
+      img.alt = project.title;
+      projectGallery.appendChild(img);
+    });
+
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("active");
+  document.body.style.overflow = "auto";
+});
+
+modal.addEventListener("click", (event) => {
+  if (event.target === modal) {
+    modal.classList.remove("active");
+    document.body.style.overflow = "auto";
+  }
+});
+    
     body {
       min-height: 100vh;
       font-family: var(--sans);
