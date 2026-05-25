@@ -53,79 +53,122 @@
   opacity: 0.75;
 }
 
-/* Project Modal */
+    /* Project Modal */
 
-.project-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(14, 12, 10, 0.82);
-  backdrop-filter: blur(12px);
-  z-index: 9999;
-  display: none;
-  overflow-y: auto;
-  padding: 40px 20px;
-}
+    .project-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      overflow-y: auto;
+      background: rgba(15, 12, 10, 0.88);
+      backdrop-filter: blur(18px);
+      padding: clamp(14px, 3vw, 34px);
+    }
 
-.project-modal.active {
-  display: block;
-}
+    .project-modal.active {
+      display: block;
+    }
 
-.project-modal-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  background: #fffaf3;
-  border-radius: 28px;
-  padding: 32px;
-  position: relative;
-}
+    .project-modal-content {
+      position: relative;
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid rgba(255, 247, 232, 0.16);
+      border-radius: 28px;
+      background: #fffaf3;
+      box-shadow: 0 36px 110px rgba(0, 0, 0, 0.36);
+    }
 
-.close-modal {
-  position: absolute;
-  top: 22px;
-  right: 24px;
-  border: none;
-  background: #111;
-  color: white;
-  font-size: 28px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-}
+    .close-modal {
+      position: fixed;
+      top: clamp(22px, 4vw, 40px);
+      right: clamp(22px, 4vw, 44px);
+      z-index: 2;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 247, 232, 0.28);
+      border-radius: 50%;
+      background: rgba(21, 17, 15, 0.78);
+      color: #fff7e8;
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      transition: transform 180ms ease, background 180ms ease;
+    }
 
-.project-modal-header {
-  max-width: 760px;
-  margin-bottom: 28px;
-}
+    .close-modal:hover,
+    .close-modal:focus-visible {
+      transform: scale(1.05);
+      background: var(--ink);
+      outline: none;
+    }
 
-.project-modal-header p:first-child {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.75rem;
-  opacity: 0.65;
-}
+    .project-modal-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(240px, 0.45fr);
+      gap: clamp(20px, 4vw, 46px);
+      align-items: end;
+      padding: clamp(28px, 6vw, 72px) clamp(22px, 5vw, 64px) clamp(22px, 4vw, 42px);
+      background:
+        radial-gradient(circle at 84% 8%, rgba(215, 174, 109, 0.38), transparent 30%),
+        linear-gradient(135deg, #fffaf3, #eadcc8);
+    }
 
-.project-modal-header h2 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  margin: 8px 0 12px;
-}
+    .project-modal-kicker {
+      color: var(--terracotta);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-.project-modal-header p {
-  line-height: 1.7;
-}
+    .project-modal-header h2 {
+      margin-top: 10px;
+      font-family: var(--serif);
+      font-size: clamp(2.65rem, 7vw, 7.5rem);
+      font-weight: 500;
+      line-height: 0.88;
+      letter-spacing: -0.06em;
+    }
 
-.project-gallery {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px;
-}
+    .project-modal-header p {
+      color: var(--muted);
+      line-height: 1.7;
+    }
 
-.project-gallery img {
-  width: 100%;
-  border-radius: 22px;
-  display: block;
-  object-fit: cover;
-}
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: clamp(10px, 2vw, 18px);
+      padding: clamp(14px, 3vw, 34px);
+      background: #15110f;
+    }
+
+    .project-gallery:empty {
+      display: none;
+    }
+
+    .project-gallery figure {
+      grid-column: span 6;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #221d19;
+    }
+
+    .project-gallery figure:first-child {
+      grid-column: span 12;
+    }
+
+    .project-gallery img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
     :root {
       --paper: #f6efe3;
       --paper-deep: #eadcc8;
@@ -161,91 +204,6 @@
       scroll-behavior: smooth;
     }
 
-const projects = {
-  ecs: {
-    title: "ECS",
-    category: "Ecological Cooling Shores",
-    description:
-      "A nocturnal architectural framework along Phoenix’s Salt River, designed as a cooling, filtering, and light-conscious edge condition.",
-    images: [
-      "assets/projects/ecs/01.jpg",
-      "assets/projects/ecs/02.jpg",
-      "assets/projects/ecs/03.jpg",
-      "assets/projects/ecs/04.jpg"
-    ]
-  },
-
-  colony518: {
-    title: "Colony_518",
-    category: "Adaptive Reuse, Sustainable Housing",
-    description:
-      "A floating adaptive reuse structure developed above a commercial base, centered on sustainability, water revival, community, and self-sustaining ecosystems.",
-    images: [
-      "assets/projects/colony-518/01.jpg",
-      "assets/projects/colony-518/02.jpg",
-      "assets/projects/colony-518/03.jpg",
-      "assets/projects/colony-518/04.jpg"
-    ]
-  },
-
-  adaptiveReuse: {
-    title: "Adaptive Reuse",
-    category: "Architecture, Urban Transformation",
-    description:
-      "A design study exploring how existing commercial or historic structures can become platforms for new housing, public life, and environmental resilience.",
-    images: [
-      "assets/projects/adaptive-reuse/01.jpg",
-      "assets/projects/adaptive-reuse/02.jpg",
-      "assets/projects/adaptive-reuse/03.jpg"
-    ]
-  }
-};
-
-const workCards = document.querySelectorAll(".work-card");
-const modal = document.getElementById("projectModal");
-const closeModal = document.getElementById("closeModal");
-const modalTitle = document.getElementById("modalTitle");
-const modalCategory = document.getElementById("modalCategory");
-const modalDescription = document.getElementById("modalDescription");
-const projectGallery = document.getElementById("projectGallery");
-
-workCards.forEach((card) => {
-  card.addEventListener("click", () => {
-    const projectKey = card.dataset.project;
-    const project = projects[projectKey];
-
-    if (!project) return;
-
-    modalTitle.textContent = project.title;
-    modalCategory.textContent = project.category;
-    modalDescription.textContent = project.description;
-
-    projectGallery.innerHTML = "";
-
-    project.images.forEach((imageSrc) => {
-      const img = document.createElement("img");
-      img.src = imageSrc;
-      img.alt = project.title;
-      projectGallery.appendChild(img);
-    });
-
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  });
-});
-
-closeModal.addEventListener("click", () => {
-  modal.classList.remove("active");
-  document.body.style.overflow = "auto";
-});
-
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-  }
-});
-    
     body {
       min-height: 100vh;
       font-family: var(--sans);
@@ -273,20 +231,6 @@ modal.addEventListener("click", (event) => {
       mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.78) 62%, transparent 100%);
     }
 
-<div class="project-modal" id="projectModal">
-  <div class="project-modal-content">
-    <button class="close-modal" id="closeModal">×</button>
-
-    <div class="project-modal-header">
-      <p id="modalCategory"></p>
-      <h2 id="modalTitle"></h2>
-      <p id="modalDescription"></p>
-    </div>
-
-    <div class="project-gallery" id="projectGallery"></div>
-  </div>
-</div>
-    
     body::after {
       content: "";
       position: fixed;
@@ -741,7 +685,20 @@ modal.addEventListener("click", (event) => {
       border-radius: var(--radius-xl);
       background: var(--night);
       box-shadow: var(--shadow);
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
       isolation: isolate;
+      padding: 0;
+      text-align: left;
+      transition: transform 180ms ease, border-color 180ms ease;
+    }
+
+    .project:hover,
+    .project:focus-visible {
+      transform: translateY(-3px);
+      border-color: rgba(255, 247, 232, 0.26);
+      outline: none;
     }
 
     .project.wide {
@@ -821,6 +778,16 @@ modal.addEventListener("click", (event) => {
     .project p {
       max-width: 630px;
       color: rgba(255, 247, 232, 0.75);
+    }
+
+    .project-open {
+      width: fit-content;
+      border-bottom: 1px solid rgba(255, 247, 232, 0.48);
+      color: #fff7e8;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .article-grid {
@@ -1065,31 +1032,6 @@ modal.addEventListener("click", (event) => {
       gap: 10px;
     }
 
-<section id="work" class="work-section">
-  <div class="section-heading">
-    <p class="eyebrow">Selected Projects</p>
-    <h2>WORK</h2>
-  </div>
-
-  <div class="work-grid">
-    <button class="work-card" data-project="ecs">
-      <img src="assets/projects/ecs/01.jpg" alt="ECS project">
-      <div class="work-card-text">
-        <h3>ECS</h3>
-        <p>Ecological Cooling Shores</p>
-      </div>
-    </button>
-
-    <button class="work-card" data-project="colony518">
-      <img src="assets/projects/colony-518/01.jpg" alt="Colony 518 project">
-      <div class="work-card-text">
-        <h3>Colony_518</h3>
-        <p>Floating adaptive reuse ecosystem community</p>
-      </div>
-    </button>
-  </div>
-</section>
-    
     .contact-band {
       overflow: hidden;
       border-top: 1px solid var(--line-strong);
@@ -1279,6 +1221,27 @@ modal.addEventListener("click", (event) => {
         border-radius: 30px;
       }
 
+      .project-modal {
+        padding: 0;
+      }
+
+      .project-modal-content {
+        border-radius: 0;
+      }
+
+      .project-modal-header {
+        grid-template-columns: 1fr;
+      }
+
+      .project-gallery figure,
+      .project-gallery figure:first-child {
+        grid-column: span 12;
+      }
+
+      .project-gallery img {
+        min-height: 280px;
+      }
+
       .article-card {
         min-height: 260px;
       }
@@ -1400,7 +1363,7 @@ modal.addEventListener("click", (event) => {
       </div>
 
       <div class="work-grid">
-        <article class="project wide reveal" style="--project-bg: linear-gradient(135deg, rgba(17,26,35,0.20), rgba(150,77,52,0.45)), url('assets/project-ecs.jpg');">
+        <button class="project wide reveal" type="button" data-project="ecs" style="--project-bg: linear-gradient(135deg, rgba(17,26,35,0.20), rgba(150,77,52,0.45)), url('assets/project-ecs.jpg');">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Thesis</span>
@@ -1409,10 +1372,11 @@ modal.addEventListener("click", (event) => {
             </div>
             <h3>Ecological Cooling Shores</h3>
             <p>A Phoenix river-edge framework where architecture becomes an inhabitable filter, inviting cool air while protecting the ecological corridor from artificial light at night.</p>
+            <span class="project-open">View project images</span>
           </div>
-        </article>
+        </button>
 
-        <article class="project narrow reveal" style="--project-bg: linear-gradient(135deg, #1f3340, #c58d61);">
+        <button class="project narrow reveal" type="button" data-project="colony518" style="--project-bg: linear-gradient(135deg, #1f3340, #c58d61);">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Adaptive Reuse</span>
@@ -1420,10 +1384,11 @@ modal.addEventListener("click", (event) => {
             </div>
             <h3>Colony_518</h3>
             <p>A floating ecosystem community built above an existing commercial base, focused on water revival, shared life, and resilient desert living.</p>
+            <span class="project-open">View project images</span>
           </div>
-        </article>
+        </button>
 
-        <article class="project reveal" style="--project-bg: linear-gradient(135deg, #d7ae6d, #78553d);">
+        <button class="project reveal" type="button" data-project="highRiseResidential" style="--project-bg: linear-gradient(135deg, #d7ae6d, #78553d);">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Professional</span>
@@ -1431,10 +1396,11 @@ modal.addEventListener("click", (event) => {
             </div>
             <h3>High-Rise Residential Work</h3>
             <p>Selected professional practice from India, including high-rise residential planning, facade thinking, coordination, and design development under a principal architect.</p>
+            <span class="project-open">View project images</span>
           </div>
-        </article>
+        </button>
 
-        <article class="project reveal" style="--project-bg: linear-gradient(135deg, #eadcc8, #1f5362);">
+        <button class="project reveal" type="button" data-project="verticalFacadeSystems" style="--project-bg: linear-gradient(135deg, #eadcc8, #1f5362);">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Facade Research</span>
@@ -1442,10 +1408,11 @@ modal.addEventListener("click", (event) => {
             </div>
             <h3>Vertical Facade Systems</h3>
             <p>Research into sloped south facades, vertical fins, and exposed circulation as architectural devices for shade, cooling, ventilation, and resilience.</p>
+            <span class="project-open">View project images</span>
           </div>
-        </article>
+        </button>
 
-        <article class="project narrow reveal" style="--project-bg: linear-gradient(135deg, #473a5d, #d7ae6d);">
+        <button class="project narrow reveal" type="button" data-project="quickFixMind" style="--project-bg: linear-gradient(135deg, #473a5d, #d7ae6d);">
           <div class="project-content">
             <div class="tags">
               <span class="tag">UI/UX</span>
@@ -1453,10 +1420,11 @@ modal.addEventListener("click", (event) => {
             </div>
             <h3>Quick Fix Mind</h3>
             <p>A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered design.</p>
+            <span class="project-open">View project images</span>
           </div>
-        </article>
+        </button>
 
-        <article class="project wide reveal" style="--project-bg: linear-gradient(135deg, #f5ead8, #964d34);">
+        <button class="project wide reveal" type="button" data-project="technicalDrawings" style="--project-bg: linear-gradient(135deg, #f5ead8, #964d34);">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Technical</span>
@@ -1465,8 +1433,9 @@ modal.addEventListener("click", (event) => {
             </div>
             <h3>Technical Drawings + Process</h3>
             <p>Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.</p>
+            <span class="project-open">View project images</span>
           </div>
-        </article>
+        </button>
       </div>
     </section>
 
@@ -1639,6 +1608,24 @@ modal.addEventListener("click", (event) => {
     </section>
   </main>
 
+  <div class="project-modal" id="projectModal" aria-hidden="true">
+    <div class="project-modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-modal" id="closeModal" type="button" aria-label="Close project gallery">×</button>
+
+      <div class="project-modal-header">
+        <div>
+          <p class="project-modal-kicker" id="modalCategory"></p>
+          <h2 id="modalTitle"></h2>
+        </div>
+        <div>
+          <p id="modalDescription"></p>
+        </div>
+      </div>
+
+      <div class="project-gallery" id="projectGallery"></div>
+    </div>
+  </div>
+
   <footer>
     <div class="shell footer-inner">
       <span>© <span id="year"></span> Lekha More. Architecture, climate, and spatial storytelling.</span>
@@ -1648,6 +1635,130 @@ modal.addEventListener("click", (event) => {
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const projects = {
+      ecs: {
+        title: "Ecological Cooling Shores",
+        category: "Thesis / Nocturnal Urbanism",
+        folder: "assets/ecs",
+        description:
+          "A Phoenix river-edge framework where architecture becomes an inhabitable filter, inviting cool air while protecting the ecological corridor from artificial light at night.",
+        images: [
+          "assets/ecs/01.jpg",
+          "assets/ecs/02.jpg",
+          "assets/ecs/03.jpg",
+          "assets/ecs/04.jpg",
+          "assets/ecs/05.jpg",
+          "assets/ecs/06.jpg",
+          "assets/ecs/07.jpg"
+        ]
+      },
+      colony518: {
+        title: "Colony_518",
+        category: "Adaptive Reuse / Community",
+        folder: "assets/colony-518",
+        description:
+          "A floating ecosystem community built above an existing commercial base, focused on water revival, shared life, and resilient desert living.",
+        images: []
+      },
+      highRiseResidential: {
+        title: "High-Rise Residential Work",
+        category: "Professional / Residential",
+        folder: "assets/high-rise-residential",
+        description:
+          "Selected professional practice from India, including high-rise residential planning, facade thinking, coordination, and design development under a principal architect.",
+        images: []
+      },
+      verticalFacadeSystems: {
+        title: "Vertical Facade Systems",
+        category: "Facade Research / Desert Climate",
+        folder: "assets/vertical-facade-systems",
+        description:
+          "Research into sloped south facades, vertical fins, and exposed circulation as architectural devices for shade, cooling, ventilation, and resilience.",
+        images: []
+      },
+      quickFixMind: {
+        title: "Quick Fix Mind",
+        category: "UI/UX / Wellness",
+        folder: "assets/quick-fix-mind",
+        description:
+          "A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered design.",
+        images: []
+      },
+      technicalDrawings: {
+        title: "Technical Drawings + Process",
+        category: "Technical / Revit / Drawings",
+        folder: "assets/technical-drawings-process",
+        description:
+          "Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.",
+        images: []
+      }
+    };
+
+    const modal = document.getElementById("projectModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalDescription = document.getElementById("modalDescription");
+    const projectGallery = document.getElementById("projectGallery");
+    let lastFocusedProject = null;
+
+    const closeProjectModal = () => {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      if (lastFocusedProject) {
+        lastFocusedProject.focus();
+      }
+    };
+
+    const openProjectModal = (projectKey, trigger) => {
+      const project = projects[projectKey];
+      if (!project) return;
+
+      lastFocusedProject = trigger;
+      modalTitle.textContent = project.title;
+      modalCategory.textContent = project.category;
+      modalDescription.textContent = project.description;
+      projectGallery.innerHTML = "";
+
+      if (project.images.length) {
+        project.images.forEach((imageSrc, index) => {
+          const figure = document.createElement("figure");
+          const img = document.createElement("img");
+          img.src = imageSrc;
+          img.alt = `${project.title} image ${index + 1}`;
+          img.loading = index === 0 ? "eager" : "lazy";
+          figure.appendChild(img);
+          projectGallery.appendChild(figure);
+        });
+      }
+
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeModal.focus();
+    };
+
+    document.querySelectorAll("[data-project]").forEach((projectCard) => {
+      projectCard.addEventListener("click", () => {
+        openProjectModal(projectCard.dataset.project, projectCard);
+      });
+    });
+
+    closeModal.addEventListener("click", closeProjectModal);
+
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeProjectModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("active")) {
+        closeProjectModal();
+      }
+    });
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
