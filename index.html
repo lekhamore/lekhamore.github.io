@@ -1346,6 +1346,10 @@
       font-size: 1.04rem;
     }
 
+    #about {
+      padding-bottom: clamp(38px, 5vw, 60px);
+    }
+
     .bring-grid {
       display: grid;
       gap: 14px;
@@ -1525,6 +1529,60 @@
       font-size: 0.9rem;
       line-height: 1.55;
       text-align: left;
+    }
+
+    .typology-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .typology-section {
+      padding-top: 0;
+    }
+
+    .typology-card {
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 241, 0.66);
+      padding: 22px;
+      box-shadow: 0 18px 54px rgba(45, 32, 22, 0.07);
+    }
+
+    .typology-card h3 {
+      margin-bottom: 16px;
+      color: var(--terracotta);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .typology-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .typology-chips span {
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.42);
+      padding: 7px 10px;
+      color: var(--text);
+      font-size: 0.86rem;
+      line-height: 1.2;
+    }
+
+    .typology-note {
+      max-width: 780px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 2vw, 1.85rem);
+      line-height: 1.15;
+      text-align: center;
+      letter-spacing: -0.035em;
     }
 
     .resume-panel {
@@ -1841,7 +1899,8 @@
       }
 
       .bring-grid,
-      .skill-categories {
+      .skill-categories,
+      .typology-grid {
         grid-template-columns: 1fr;
       }
 
@@ -2038,6 +2097,117 @@
           <h2>Ecological Cooling Shores, a nocturnal edge where the city exhales.</h2>
         </div>
       </aside>
+    </section>
+
+    <section id="about" class="shell section">
+      <div class="about-grid">
+        <aside class="portrait-card reveal" aria-label="Portrait of Lekha More">
+          <div class="portrait-media">
+            <img src="assets/profile.jpg" alt="Lekha More portrait" />
+          </div>
+          <div class="portrait-caption">
+            <strong>Designer, researcher, writer.</strong>
+            <p>Originally from Mumbai, currently rooted in Phoenix, working toward a design practice shaped by climate, belonging, and atmosphere.</p>
+          </div>
+        </aside>
+
+        <article class="about-card reveal">
+          <div class="kicker">About Lekha</div>
+          <h2>I work between architectural systems and emotional narratives.</h2>
+          <p>
+            My graduate work at Arizona State University focused on ecological urbanism, adaptive reuse, desert climate, and the spatial performance of thresholds. I am drawn to architecture that is not just seen, but felt, through shade, air, memory, material, and community.
+          </p>
+          <p>
+            I also bring two years of professional practice experience from India, where I worked directly under a principal architect on high-rise residential projects, design development, and architectural coordination. Across academic, professional, and written work, I aim to communicate design clearly, beautifully, and with purpose.
+          </p>
+          <div class="skill-categories" aria-label="Skill categories">
+            <article class="skill-category">
+              <h3>Design Tools</h3>
+              <p>Revit, Rhino, AutoCAD</p>
+            </article>
+            <article class="skill-category">
+              <h3>Technical</h3>
+              <p>Plans, sections, documentation, facade logic</p>
+            </article>
+            <article class="skill-category">
+              <h3>Research</h3>
+              <p>Climate, adaptive reuse, urban systems</p>
+            </article>
+            <article class="skill-category">
+              <h3>Visualization</h3>
+              <p>Illustrator, Photoshop, InDesign, diagrams</p>
+            </article>
+            <article class="skill-category">
+              <h3>Writing</h3>
+              <p>Architectural essays, publication graphics, narrative framing</p>
+            </article>
+            <article class="skill-category">
+              <h3>Practice</h3>
+              <p>Residential workflows, coordination, facade thinking</p>
+            </article>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="typologies" class="shell section typology-section">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Project Index</div>
+          <h2>Project Typologies & Design Scales</h2>
+        </div>
+        <p>
+          A compact overview of the building types, planning scales, and design approaches I have worked across.
+        </p>
+      </div>
+
+      <div class="typology-grid reveal" aria-label="Project typologies and design scales">
+        <article class="typology-card">
+          <h3>Building Typologies</h3>
+          <div class="typology-chips">
+            <span>Multifamily Residential</span>
+            <span>Commercial / Retail</span>
+            <span>Mixed-Use Development</span>
+            <span>Light Industrial</span>
+            <span>Interior Architecture</span>
+          </div>
+        </article>
+
+        <article class="typology-card">
+          <h3>Urban + Planning Scale</h3>
+          <div class="typology-chips">
+            <span>Urban Design</span>
+            <span>Master Planning</span>
+            <span>Site Planning</span>
+            <span>Public Realm</span>
+            <span>Community-Oriented Spaces</span>
+          </div>
+        </article>
+
+        <article class="typology-card">
+          <h3>Climate + Reuse Strategies</h3>
+          <div class="typology-chips">
+            <span>Adaptive Reuse</span>
+            <span>Climate-Responsive Design</span>
+            <span>Sustainable Design</span>
+            <span>Biomimetic Design</span>
+            <span>Facade Systems</span>
+          </div>
+        </article>
+
+        <article class="typology-card">
+          <h3>Research + Representation</h3>
+          <div class="typology-chips">
+            <span>Research-Based Design</span>
+            <span>Environmental Analysis</span>
+            <span>Architectural Writing</span>
+            <span>Visual Storytelling</span>
+            <span>Design Documentation</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="typology-note reveal">My work moves between building-scale design, urban systems, climate research, and narrative representation.</p>
     </section>
 
     <section id="work" class="shell section">
@@ -2404,57 +2574,6 @@
           <div>
             <h3>AI, UX, and Emerging Tools</h3>
             <p>AI-assisted visualization, UX thinking, interface logic, user journeys, and design systems.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="about" class="shell section">
-      <div class="about-grid">
-        <aside class="portrait-card reveal" aria-label="Portrait of Lekha More">
-          <div class="portrait-media">
-            <img src="assets/profile.jpg" alt="Lekha More portrait" />
-          </div>
-          <div class="portrait-caption">
-            <strong>Designer, researcher, writer.</strong>
-            <p>Originally from Mumbai, currently rooted in Phoenix, working toward a design practice shaped by climate, belonging, and atmosphere.</p>
-          </div>
-        </aside>
-
-        <article class="about-card reveal">
-          <div class="kicker">About Lekha</div>
-          <h2>I work between architectural systems and emotional narratives.</h2>
-          <p>
-            My graduate work at Arizona State University focused on ecological urbanism, adaptive reuse, desert climate, and the spatial performance of thresholds. I am drawn to architecture that is not just seen, but felt, through shade, air, memory, material, and community.
-          </p>
-          <p>
-            I also bring two years of professional practice experience from India, where I worked directly under a principal architect on high-rise residential projects, design development, and architectural coordination. Across academic, professional, and written work, I aim to communicate design clearly, beautifully, and with purpose.
-          </p>
-          <div class="skill-categories" aria-label="Skill categories">
-            <article class="skill-category">
-              <h3>Design Tools</h3>
-              <p>Revit, Rhino, AutoCAD</p>
-            </article>
-            <article class="skill-category">
-              <h3>Technical</h3>
-              <p>Plans, sections, documentation, facade logic</p>
-            </article>
-            <article class="skill-category">
-              <h3>Research</h3>
-              <p>Climate, adaptive reuse, urban systems</p>
-            </article>
-            <article class="skill-category">
-              <h3>Visualization</h3>
-              <p>Illustrator, Photoshop, InDesign, diagrams</p>
-            </article>
-            <article class="skill-category">
-              <h3>Writing</h3>
-              <p>Architectural essays, publication graphics, narrative framing</p>
-            </article>
-            <article class="skill-category">
-              <h3>Practice</h3>
-              <p>Residential workflows, coordination, facade thinking</p>
-            </article>
           </div>
         </article>
       </div>
