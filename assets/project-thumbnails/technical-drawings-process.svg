@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Technical drawings and process thumbnail</title>
+  <desc id="desc">Abstract architectural drawing sheet with plan grid, section lines, and diagram annotations.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffaf3"/>
+      <stop offset=".62" stop-color="#d6b99b"/>
+      <stop offset="1" stop-color="#964d34"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <g stroke="#15110f" stroke-opacity=".24" stroke-width="3">
+    <path d="M100 180h980M100 300h980M100 420h980M100 540h980M100 660h980"/>
+    <path d="M180 110v600M340 110v600M500 110v600M660 110v600M820 110v600M980 110v600"/>
+  </g>
+  <g fill="none" stroke="#15110f" stroke-opacity=".55" stroke-width="6">
+    <rect x="250" y="250" width="360" height="260"/>
+    <path d="M250 380h360M430 250v260"/>
+    <path d="M700 250h240v260H700zM700 340h240M780 250v260"/>
+  </g>
+  <g stroke="#964d34" stroke-width="7" stroke-linecap="round">
+    <path d="M190 595h820"/>
+    <path d="M190 595l48-42M190 595l48 42M1010 595l-48-42M1010 595l-48 42"/>
+  </g>
+  <text x="84" y="112" fill="#15110f" font-family="Georgia, serif" font-size="58">Technical Drawings + Process</text>
+</svg>

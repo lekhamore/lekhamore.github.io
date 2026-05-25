@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lekha More | Architecture Portfolio</title>
   <meta name="description" content="Portfolio website of Lekha More, architectural designer and M.Arch graduate working across ecological urbanism, adaptive reuse, climate-conscious design, writing, and spatial storytelling." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Lekha More | Architecture Portfolio" />
+  <meta property="og:description" content="Architectural designer, researcher, writer, and visual storyteller working through climate, memory, material intelligence, and human experience." />
+  <meta property="og:image" content="https://lekhamore.github.io/assets/hero-project.jpg" />
+  <meta property="og:url" content="https://lekhamore.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lekha More | Architecture Portfolio" />
+  <meta name="twitter:description" content="Architecture, adaptive reuse, writing, teaching, AI/UX, and climate-conscious design work." />
+  <meta name="twitter:image" content="https://lekhamore.github.io/assets/hero-project.jpg" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-S98Z7YCSLX"></script>
@@ -173,6 +182,7 @@
       overflow: hidden;
       border-radius: 18px;
       background: #221d19;
+      color: #fff7e8;
     }
 
     .project-gallery figure:first-child {
@@ -181,10 +191,18 @@
 
     .project-gallery img {
       width: 100%;
-      height: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
       min-height: 360px;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
+    }
+
+    .project-gallery figcaption {
+      padding: 12px 14px 14px;
+      color: rgba(255, 247, 232, 0.76);
+      font-size: 0.88rem;
+      line-height: 1.45;
     }
 
     :root {
@@ -388,6 +406,30 @@
     .nav-links a:hover {
       background: rgba(21, 17, 15, 0.07);
       color: var(--ink);
+    }
+
+    .nav-links a.is-active {
+      background: rgba(150, 77, 52, 0.13);
+      color: var(--terracotta-dark);
+      box-shadow: inset 0 0 0 1px rgba(150, 77, 52, 0.18);
+    }
+
+    .nav-links .resume-link {
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 850;
+    }
+
+    .nav-links .resume-link:hover {
+      background: #000;
+      color: var(--paper);
+    }
+
+    .nav-links .resume-link.is-active {
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: none;
     }
 
     .btn {
@@ -1080,6 +1122,25 @@
       text-transform: uppercase;
     }
 
+    .article-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .article-tags span {
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.38);
+      padding: 6px 9px;
+      color: var(--text);
+      font-size: 0.76rem;
+      font-weight: 780;
+    }
+
     .article-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -1217,14 +1278,15 @@
 
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-      gap: 18px;
-      align-items: stretch;
+      grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
     }
 
     .portrait-card {
+      align-self: stretch;
       display: grid;
-      grid-template-rows: 1fr auto;
+      grid-template-rows: minmax(0, 1fr) auto;
       overflow: hidden;
       border: 1px solid rgba(21, 17, 15, 0.12);
       border-radius: var(--radius-xl);
@@ -1233,8 +1295,6 @@
     }
 
     .portrait-media {
-      min-height: 560px;
-      aspect-ratio: 3 / 4;
       overflow: hidden;
       background: var(--night);
     }
@@ -1267,11 +1327,11 @@
     .about-card {
       min-height: 100%;
       display: grid;
-      align-content: center;
+      align-content: start;
       border: 1px solid rgba(21, 17, 15, 0.12);
       border-radius: var(--radius-xl);
       background: rgba(255, 250, 241, 0.70);
-      padding: clamp(30px, 5vw, 58px);
+      padding: clamp(34px, 4vw, 52px) clamp(28px, 4.5vw, 54px) clamp(24px, 3vw, 36px);
       box-shadow: var(--shadow);
     }
 
@@ -1281,13 +1341,12 @@
 
     .about-card p {
       max-width: 760px;
-      margin-top: 18px;
+      margin-top: 14px;
       color: var(--text);
       font-size: 1.04rem;
     }
 
-    .bring-grid,
-    .experience-timeline {
+    .bring-grid {
       display: grid;
       gap: 14px;
     }
@@ -1319,34 +1378,101 @@
     }
 
     .experience-timeline {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      counter-reset: experience;
+      position: relative;
+      display: grid;
+      gap: 0;
+      padding: 24px 0;
+    }
+
+    .experience-timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, var(--blue), var(--terracotta), var(--violet));
+      transform: translateX(-50%);
+      box-shadow: 0 18px 46px rgba(45, 32, 22, 0.16);
     }
 
     .experience-item {
       position: relative;
-      min-height: 210px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+      align-items: center;
+      min-height: 250px;
     }
 
-    .experience-item::before {
-      counter-increment: experience;
-      content: "0" counter(experience);
+    .experience-item:nth-child(odd) .experience-card {
+      grid-column: 1;
+      text-align: right;
+    }
+
+    .experience-item:nth-child(even) .experience-card {
+      grid-column: 3;
+    }
+
+    .experience-marker {
+      position: relative;
+      z-index: 2;
+      grid-column: 2;
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border: 4px solid #fffaf3;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: 0 18px 40px rgba(45, 32, 22, 0.18);
+    }
+
+    .experience-marker .icon {
+      width: 1.55rem;
+      height: 1.55rem;
+    }
+
+    .experience-card {
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 241, 0.72);
+      padding: clamp(20px, 3vw, 30px);
+      box-shadow: 0 18px 54px rgba(45, 32, 22, 0.08);
+    }
+
+    .experience-card time {
       display: block;
-      margin-bottom: 28px;
       color: var(--terracotta);
-      font-size: 0.78rem;
+      font-size: clamp(1.8rem, 4vw, 3.8rem);
       font-weight: 900;
-      letter-spacing: 0.14em;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
     }
 
-    .experience-item time {
+    .experience-location {
       display: block;
-      margin-bottom: 10px;
+      margin: 8px 0 14px;
       color: var(--muted);
       font-size: 0.82rem;
       font-weight: 900;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+    }
+
+    .experience-card h3 {
+      margin-top: 12px;
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 2.4vw, 2.4rem);
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .experience-card p {
+      color: var(--muted);
+      line-height: 1.68;
     }
 
     .skills {
@@ -1363,6 +1489,42 @@
       padding: 9px 12px;
       color: var(--text);
       font-size: 0.90rem;
+    }
+
+    .skill-categories {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .skill-category {
+      min-height: 150px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.42);
+      padding: 18px;
+      text-align: left;
+    }
+
+    .skill-category h3 {
+      margin: 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+
+    .skill-category p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+      text-align: left;
     }
 
     .resume-panel {
@@ -1418,6 +1580,28 @@
       border-bottom: 1px solid var(--line-strong);
       padding: 18px 0;
       margin-bottom: 34px;
+    }
+
+    .footer-cta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 34px;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 241, 0.68);
+      padding: clamp(20px, 3vw, 28px);
+    }
+
+    .footer-cta strong {
+      max-width: 720px;
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 2.6vw, 2.45rem);
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
     }
 
     .marquee {
@@ -1557,8 +1741,13 @@
       }
 
       .portrait-media {
-        min-height: 520px;
-        aspect-ratio: 4 / 5;
+        min-height: auto;
+        aspect-ratio: 2 / 3;
+      }
+
+      .portrait-card {
+        align-self: start;
+        grid-template-rows: auto auto;
       }
 
       .resume-actions {
@@ -1570,8 +1759,29 @@
       }
 
       .bring-grid,
-      .experience-timeline {
+      .skill-categories {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .experience-timeline::before {
+        left: 36px;
+      }
+
+      .experience-item {
+        grid-template-columns: 72px minmax(0, 1fr);
+        gap: 18px;
+        min-height: auto;
+        padding: 18px 0;
+      }
+
+      .experience-item:nth-child(odd) .experience-card,
+      .experience-item:nth-child(even) .experience-card {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .experience-marker {
+        grid-column: 1;
       }
     }
 
@@ -1631,7 +1841,7 @@
       }
 
       .bring-grid,
-      .experience-timeline {
+      .skill-categories {
         grid-template-columns: 1fr;
       }
 
@@ -1687,8 +1897,8 @@
       }
 
       .portrait-media {
-        min-height: 470px;
-        aspect-ratio: 3 / 4;
+        min-height: auto;
+        aspect-ratio: 2 / 3;
       }
     }
   </style>
@@ -1764,6 +1974,7 @@
         <a href="#writing"><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>Writing</a>
         <a href="#experience"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Experience</a>
         <a href="#skills"><svg class="icon" aria-hidden="true"><use href="#icon-behance"></use></svg>Skills</a>
+        <a class="resume-link" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Resume</a>
         <a class="contact-link" href="#contact"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Contact</a>
       </div>
 
@@ -1867,7 +2078,7 @@
       </article>
 
       <div class="work-grid">
-        <button class="project narrow reveal" type="button" data-project="colony518" style="--project-bg: linear-gradient(135deg, #1f3340, #c58d61);">
+        <button class="project narrow reveal" type="button" data-project="colony518" style="--project-bg: url('assets/project-thumbnails/colony-518.svg');">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Adaptive Reuse</span>
@@ -1879,11 +2090,11 @@
               <span><strong>Role:</strong> Research, concept development, facade strategy, diagrams, visual narrative</span>
               <span><strong>Skills shown:</strong> Adaptive reuse, sustainability, community design, desert-climate thinking</span>
             </div>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-open">Explore Colony_518 <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project reveal" type="button" data-project="highRiseResidential" style="--project-bg: linear-gradient(135deg, #d7ae6d, #78553d);">
+        <button class="project reveal" type="button" data-project="highRiseResidential" style="--project-bg: url('assets/project-thumbnails/high-rise-residential.svg');">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Professional</span>
@@ -1895,11 +2106,11 @@
               <span><strong>Role:</strong> Design support, drawings, coordination, facade studies</span>
               <span><strong>Skills shown:</strong> Residential systems, documentation logic, Revit growth, professional collaboration</span>
             </div>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-open">Review High-Rise Work <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project reveal" type="button" data-project="verticalFacadeSystems" style="--project-bg: linear-gradient(135deg, #eadcc8, #1f5362);">
+        <button class="project reveal" type="button" data-project="verticalFacadeSystems" style="--project-bg: url('assets/project-thumbnails/vertical-facade-systems.svg');">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Facade Research</span>
@@ -1911,11 +2122,11 @@
               <span><strong>Role:</strong> Environmental research, section studies, facade strategy</span>
               <span><strong>Skills shown:</strong> Climate analysis, technical diagrams, solar logic, desert responsiveness</span>
             </div>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-open">Study Facade Systems <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project narrow reveal" type="button" data-project="quickFixMind" style="--project-bg: linear-gradient(135deg, #473a5d, #d7ae6d);">
+        <button class="project narrow reveal" type="button" data-project="quickFixMind" style="--project-bg: url('assets/project-thumbnails/quick-fix-mind.svg');">
           <div class="project-content">
             <div class="tags">
               <span class="tag">UI/UX</span>
@@ -1927,11 +2138,11 @@
               <span><strong>Role:</strong> UX concept, user journeys, visual system, interaction logic</span>
               <span><strong>Skills shown:</strong> Human-centered design, interface thinking, emotional mapping, design systems</span>
             </div>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-open">Open UX Case Study <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project wide reveal" type="button" data-project="technicalDrawings" style="--project-bg: linear-gradient(135deg, #f5ead8, #964d34);">
+        <button class="project wide reveal" type="button" data-project="technicalDrawings" style="--project-bg: url('assets/project-thumbnails/technical-drawings-process.svg');">
           <div class="project-content">
             <div class="tags">
               <span class="tag">Technical</span>
@@ -1944,7 +2155,7 @@
               <span><strong>Role:</strong> Drafting, drawing organization, process documentation</span>
               <span><strong>Skills shown:</strong> Technical clarity, Revit workflows, spatial communication, drawing discipline</span>
             </div>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-open">See Drawing Process <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
       </div>
@@ -2030,6 +2241,11 @@
             <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>20 Skyscraper Design: Challenge and Beauty of the Upcoming Era</h3>
             <p>Research and writing on vertical urbanism, high-rise design, and the evolving role of skyscrapers in contemporary cities.</p>
+            <div class="article-tags">
+              <span>High-Rise</span>
+              <span>Urbanism</span>
+              <span>Research</span>
+            </div>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
@@ -2042,6 +2258,11 @@
             <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>Eco-Friendly Building Materials: 20 Examples of the Latest Trend</h3>
             <p>A material-focused article exploring sustainable construction practices and emerging ecological design choices.</p>
+            <div class="article-tags">
+              <span>Materials</span>
+              <span>Sustainability</span>
+              <span>Ecology</span>
+            </div>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
@@ -2054,6 +2275,11 @@
             <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>Floating City: 8 Requirements to Tackle the Environmental Crisis</h3>
             <p>Research on speculative urban futures, water-based settlement, and climate-responsive city-making.</p>
+            <div class="article-tags">
+              <span>Speculative Futures</span>
+              <span>Climate</span>
+              <span>Water Urbanism</span>
+            </div>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
@@ -2066,37 +2292,73 @@
     <section id="experience" class="shell section">
       <div class="section-head reveal">
         <div>
-          <div class="kicker">Experience</div>
-          <h2>A compact timeline of study, teaching, writing, and practice.</h2>
+          <div class="kicker">Experience Timeline</div>
+          <h2>Study, teaching, writing, practice, and ongoing design work.</h2>
         </div>
         <p>
-          A cleaner website version of the chronology recruiters look for, without turning the portfolio into a resume.
+          A polished chronology of the roles and experiences shaping my architectural voice.
         </p>
       </div>
 
       <div class="experience-timeline reveal">
         <article class="experience-item">
-          <time>2026</time>
-          <h3>M.Arch, Arizona State University</h3>
-          <p>Graduate architectural study focused on ecological urbanism, adaptive reuse, desert climate, and spatial storytelling.</p>
+          <div class="experience-card">
+            <time>2026</time>
+            <h3>M.Arch, Arizona State University</h3>
+            <span class="experience-location">Phoenix, Arizona</span>
+            <p>Completed graduate architectural study focused on ecological urbanism, adaptive reuse, desert climate, environmental systems, and spatial storytelling. My thesis work, Ecological Cooling Shores, explored architecture as a climate-responsive threshold between city, river, night, and ecology.</p>
+          </div>
+          <div class="experience-marker" aria-hidden="true">
+            <svg class="icon"><use href="#icon-folder"></use></svg>
+          </div>
         </article>
 
         <article class="experience-item">
-          <time>2025-2026</time>
-          <h3>Teaching Assistant, DSC 101 Design Awareness</h3>
-          <p>Herberger Institute teaching support across design awareness, creative process, visual communication, and student critique.</p>
+          <div class="experience-card">
+            <time>2025-2026</time>
+            <h3>Teaching Assistant, DSC 101 Design Awareness</h3>
+            <span class="experience-location">Herberger Institute for Design and the Arts</span>
+            <p>Supported design education through student feedback, assignment review, visual communication guidance, and creative process development. This role strengthened my ability to explain design clearly, evaluate ideas critically, and help students connect everyday observations to larger design principles.</p>
+          </div>
+          <div class="experience-marker" aria-hidden="true">
+            <svg class="icon"><use href="#icon-document"></use></svg>
+          </div>
         </article>
 
         <article class="experience-item">
-          <time>2023-2024</time>
-          <h3>Architectural Content Writer, The Architects Diary</h3>
-          <p>Published research-led articles on tall buildings, sustainable materials, floating cities, and architectural history.</p>
+          <div class="experience-card">
+            <time>2023-2024</time>
+            <h3>Architectural Content Writer, The Architects Diary</h3>
+            <span class="experience-location">Remote / India</span>
+            <p>Wrote research-led architectural articles on skyscraper design, sustainable materials, floating cities, Buddhist temples, and architectural history. This experience shaped my voice as a designer who can translate complex architectural ideas into accessible, engaging, and visually aware writing.</p>
+          </div>
+          <div class="experience-marker" aria-hidden="true">
+            <svg class="icon"><use href="#icon-newspaper"></use></svg>
+          </div>
         </article>
 
         <article class="experience-item">
-          <time>India Practice Experience</time>
-          <h3>Architectural Designer</h3>
-          <p>Experience in residential, interior, and high-rise design workflows, including drawings, coordination, and design development.</p>
+          <div class="experience-card">
+            <time>Professional Practice, India</time>
+            <h3>Architectural Designer</h3>
+            <span class="experience-location">Residential, interior, and high-rise workflows</span>
+            <p>Worked directly under a principal architect on residential, interior, and high-rise design projects. Contributed to design development, drawings, coordination, facade thinking, and spatial planning while building a strong foundation in professional architectural workflows.</p>
+          </div>
+          <div class="experience-marker" aria-hidden="true">
+            <svg class="icon"><use href="#icon-globe"></use></svg>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-card">
+            <time>Ongoing</time>
+            <h3>Architectural Designer, Researcher, Writer, and Visual Storyteller</h3>
+            <span class="experience-location">Phoenix, Arizona · Open to relocation</span>
+            <p>I work across architecture, climate research, adaptive reuse, writing, visualization, and emerging design technologies, with a focus on creating spaces that respond to heat, memory, material, ecology, and human experience.</p>
+          </div>
+          <div class="experience-marker" aria-hidden="true">
+            <svg class="icon"><use href="#icon-location"></use></svg>
+          </div>
         </article>
       </div>
     </section>
@@ -2168,18 +2430,31 @@
           <p>
             I also bring two years of professional practice experience from India, where I worked directly under a principal architect on high-rise residential projects, design development, and architectural coordination. Across academic, professional, and written work, I aim to communicate design clearly, beautifully, and with purpose.
           </p>
-          <div class="skills" aria-label="Skills and software">
-            <span>Revit</span>
-            <span>Rhino</span>
-            <span>AutoCAD</span>
-            <span>Adobe Illustrator</span>
-            <span>Photoshop</span>
-            <span>InDesign</span>
-            <span>Architectural Diagrams</span>
-            <span>Environmental Design</span>
-            <span>Adaptive Reuse</span>
-            <span>Research Writing</span>
-            <span>Presentation Design</span>
+          <div class="skill-categories" aria-label="Skill categories">
+            <article class="skill-category">
+              <h3>Design Tools</h3>
+              <p>Revit, Rhino, AutoCAD</p>
+            </article>
+            <article class="skill-category">
+              <h3>Technical</h3>
+              <p>Plans, sections, documentation, facade logic</p>
+            </article>
+            <article class="skill-category">
+              <h3>Research</h3>
+              <p>Climate, adaptive reuse, urban systems</p>
+            </article>
+            <article class="skill-category">
+              <h3>Visualization</h3>
+              <p>Illustrator, Photoshop, InDesign, diagrams</p>
+            </article>
+            <article class="skill-category">
+              <h3>Writing</h3>
+              <p>Architectural essays, publication graphics, narrative framing</p>
+            </article>
+            <article class="skill-category">
+              <h3>Practice</h3>
+              <p>Residential workflows, coordination, facade thinking</p>
+            </article>
           </div>
         </article>
       </div>
@@ -2206,8 +2481,6 @@
         <div class="marquee">
           <span>Let’s build carefully.</span>
           <span>Let’s design with climate.</span>
-          <span>Let’s build carefully.</span>
-          <span>Let’s design with climate.</span>
         </div>
       </div>
 
@@ -2219,6 +2492,7 @@
           </div>
           <p>
             Based in Phoenix, Arizona, and open to architectural design, documentation, research, and visualization opportunities.
+            Open to architectural designer, junior designer, and design assistant roles.
           </p>
         </div>
 
@@ -2236,6 +2510,11 @@
   <a class="contact-card" href="https://www.behance.net/lekhamore" target="_blank" rel="noreferrer">
     <small><svg class="icon" aria-hidden="true"><use href="#icon-behance"></use></svg>Behance</small>
     <strong>behance.net/lekhamore</strong>
+  </a>
+
+  <a class="contact-card" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer">
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Resume</small>
+    <strong>Open downloadable resume</strong>
   </a>
 
   <a class="contact-card" href="https://www.instagram.com/lekhamore" target="_blank" rel="noreferrer">
@@ -2258,6 +2537,10 @@
     <strong>Phoenix, Arizona · Open to relocation</strong>
   </div>
 </div>
+        <div class="footer-cta reveal">
+          <strong>Looking for architectural roles, collaborations, or portfolio feedback? Let’s connect.</strong>
+          <a class="btn dark" href="mailto:lekhamore@gmail.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email Lekha</a>
+        </div>
       </div>
     </section>
   </main>
@@ -2328,6 +2611,15 @@
           "assets/ecs/05.jpg",
           "assets/ecs/06.jpg",
           "assets/ecs/07.jpg"
+        ],
+        captions: [
+          "Final render: nocturnal shoreline architecture along the Salt River corridor.",
+          "Process image: modular ribs and light-filtering spatial logic.",
+          "Environmental sequence: shade, darkness, breeze, and ecological thresholds.",
+          "Sectional thinking: inhabitable edges between city and river ecology.",
+          "Material atmosphere: tensile filtering layers and night-safe illumination.",
+          "Urban strategy: public cooling moments without overpowering the corridor.",
+          "Narrative board: Phoenix, heat, darkness, and care as design arguments."
         ]
       },
       colony518: {
@@ -2336,7 +2628,16 @@
         folder: "assets/colony-518",
         description:
           "A sustainable adaptive reuse proposal exploring water revival, vertical community, and self-sustaining ecological systems.",
-        images: []
+        images: [
+          "assets/project-thumbnails/colony-518.svg",
+          "assets/project-thumbnails/colony-518.svg",
+          "assets/project-thumbnails/colony-518.svg"
+        ],
+        captions: [
+          "Process diagram: adaptive reuse massing layered over an existing commercial base.",
+          "Final concept board: vertical community, water revival, and shared ecological life.",
+          "Section and systems view: self-sustaining living, circulation, and collective thresholds."
+        ]
       },
       highRiseResidential: {
         title: "High-Rise Residential Work",
@@ -2344,7 +2645,16 @@
         folder: "assets/high-rise-residential",
         description:
           "Residential and high-rise design workflows from professional practice in India, connecting planning, facade thinking, coordination, and design development.",
-        images: []
+        images: [
+          "assets/project-thumbnails/high-rise-residential.svg",
+          "assets/project-thumbnails/high-rise-residential.svg",
+          "assets/project-thumbnails/high-rise-residential.svg"
+        ],
+        captions: [
+          "Facade study: residential tower rhythm, elevation logic, and vertical proportion.",
+          "Planning workflow: high-rise residential organization and coordination thinking.",
+          "Professional process: design development support, drawing review, and documentation growth."
+        ]
       },
       verticalFacadeSystems: {
         title: "Vertical Facade Systems",
@@ -2352,7 +2662,16 @@
         folder: "assets/vertical-facade-systems",
         description:
           "Research into sloped south facades, vertical fins, and exposed circulation as architectural devices for shade, cooling, ventilation, and resilience.",
-        images: []
+        images: [
+          "assets/project-thumbnails/vertical-facade-systems.svg",
+          "assets/project-thumbnails/vertical-facade-systems.svg",
+          "assets/project-thumbnails/vertical-facade-systems.svg"
+        ],
+        captions: [
+          "Climate diagram: south facade exposure, sun angle, and shade response.",
+          "Facade system: vertical fins as cooling, ventilation, and resilience devices.",
+          "Sectional study: circulation, thermal comfort, and desert-climate performance."
+        ]
       },
       quickFixMind: {
         title: "Quick Fix Mind",
@@ -2360,7 +2679,16 @@
         folder: "assets/quick-fix-mind",
         description:
           "A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered design.",
-        images: []
+        images: [
+          "assets/project-thumbnails/quick-fix-mind.svg",
+          "assets/project-thumbnails/quick-fix-mind.svg",
+          "assets/project-thumbnails/quick-fix-mind.svg"
+        ],
+        captions: [
+          "User journey: mood-based entry points and emotional reset pathways.",
+          "Interface logic: small, accessible micro-interventions for everyday use.",
+          "Visual system: soft states, shared moods, and human-centered interaction flows."
+        ]
       },
       technicalDrawings: {
         title: "Technical Drawings + Process",
@@ -2368,7 +2696,16 @@
         folder: "assets/technical-drawings-process",
         description:
           "Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.",
-        images: []
+        images: [
+          "assets/project-thumbnails/technical-drawings-process.svg",
+          "assets/project-thumbnails/technical-drawings-process.svg",
+          "assets/project-thumbnails/technical-drawings-process.svg"
+        ],
+        captions: [
+          "Plan logic: organizing spatial intent through clear drawing structure.",
+          "Section and detail study: technical communication and construction reasoning.",
+          "Process sheet: diagrams, annotations, and documentation discipline."
+        ]
       }
     };
 
@@ -2407,6 +2744,11 @@
           img.alt = `${project.title} image ${index + 1}`;
           img.loading = index === 0 ? "eager" : "lazy";
           figure.appendChild(img);
+          if (project.captions?.[index]) {
+            const caption = document.createElement("figcaption");
+            caption.textContent = project.captions[index];
+            figure.appendChild(caption);
+          }
           projectGallery.appendChild(figure);
         });
       }
@@ -2446,6 +2788,41 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+
+    const sectionLinks = [...mainNavigation.querySelectorAll('a[href^="#"]')];
+    const sections = sectionLinks
+      .map((link) => ({
+        id: link.getAttribute("href").slice(1),
+        link,
+        section: document.querySelector(link.getAttribute("href"))
+      }))
+      .filter((item) => item.section);
+
+    const updateActiveSection = () => {
+      const navOffset = document.querySelector(".nav").offsetHeight;
+      const readingLine = navOffset + (window.innerHeight - navOffset) * 0.34;
+      let activeSection = sections[0];
+
+      sections.forEach((item) => {
+        const rect = item.section.getBoundingClientRect();
+        if (rect.top <= readingLine && rect.bottom >= readingLine) {
+          activeSection = item;
+        }
+      });
+
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+        activeSection = sections[sections.length - 1];
+      }
+
+      sections.forEach((item) => {
+        item.link.classList.toggle("is-active", item === activeSection);
+      });
+    };
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", updateActiveSection);
+    updateActiveSection();
   </script>
 </body>
 </html>
