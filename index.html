@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lekha More | Architecture Portfolio</title>
   <meta name="description" content="Portfolio website of Lekha More, architectural designer and M.Arch graduate working across ecological urbanism, adaptive reuse, climate-conscious design, writing, and spatial storytelling." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
   <style>
     .work-grid {
@@ -88,6 +90,8 @@
       z-index: 2;
       width: 48px;
       height: 48px;
+      display: grid;
+      place-items: center;
       border: 1px solid rgba(255, 247, 232, 0.28);
       border-radius: 50%;
       background: rgba(21, 17, 15, 0.78);
@@ -251,6 +255,25 @@
       text-decoration: none;
     }
 
+    .icon-sprite {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .icon {
+      width: 1.05em;
+      height: 1.05em;
+      flex: 0 0 auto;
+      fill: currentColor;
+    }
+
+    .icon.small {
+      width: 0.88em;
+      height: 0.88em;
+    }
+
     img {
       display: block;
       max-width: 100%;
@@ -287,6 +310,7 @@
     }
 
     .nav-inner {
+      position: relative;
       min-height: 76px;
       display: flex;
       align-items: center;
@@ -304,15 +328,12 @@
       width: 42px;
       height: 42px;
       flex: 0 0 42px;
-      display: grid;
-      place-items: center;
       border: 1px solid var(--line-strong);
       border-radius: 50%;
       background: rgba(255, 250, 241, 0.56);
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 1.22rem;
       box-shadow: 0 10px 26px rgba(45, 32, 22, 0.07);
+      object-fit: cover;
+      object-position: center;
     }
 
     .brand-copy {
@@ -342,6 +363,9 @@
     }
 
     .nav-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       padding: 9px 12px;
       border-radius: 999px;
       transition: background 180ms ease, color 180ms ease;
@@ -387,6 +411,38 @@
       border-color: var(--paper);
       background: var(--paper);
       color: var(--ink);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: rgba(255, 250, 241, 0.68);
+      color: var(--ink);
+      cursor: pointer;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+      background: rgba(255, 250, 241, 0.94);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .menu-toggle .close-icon {
+      display: none;
+    }
+
+    .menu-toggle.is-open .menu-icon {
+      display: none;
+    }
+
+    .menu-toggle.is-open .close-icon {
+      display: block;
     }
 
     main {
@@ -670,6 +726,115 @@
       font-size: 0.95rem;
     }
 
+    .philosophy-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1fr);
+      gap: clamp(30px, 6vw, 84px);
+      align-items: start;
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
+      padding-top: 80px;
+    }
+
+    .philosophy-section h2 {
+      position: sticky;
+      top: 112px;
+      color: rgba(21, 17, 15, 0.88);
+    }
+
+    .philosophy-body {
+      display: grid;
+      gap: 22px;
+    }
+
+    .philosophy-body h3 {
+      max-width: 760px;
+      font-family: var(--serif);
+      font-size: clamp(2.15rem, 4.7vw, 5.25rem);
+      font-weight: 500;
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+    }
+
+    .philosophy-copy {
+      display: grid;
+      gap: 16px;
+      max-width: 760px;
+      color: var(--text);
+      font-size: clamp(1rem, 1.45vw, 1.18rem);
+      line-height: 1.76;
+    }
+
+    .philosophy-copy p:last-child {
+      color: var(--terracotta-dark);
+      font-family: var(--serif);
+      font-size: clamp(1.35rem, 2.4vw, 2.25rem);
+      line-height: 1.14;
+      letter-spacing: -0.035em;
+    }
+
+    .philosophy-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .philosophy-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 90% 8%, rgba(31, 83, 98, 0.12), transparent 34%),
+        rgba(255, 250, 241, 0.62);
+      padding: 28px 30px;
+      box-shadow: 0 18px 46px rgba(45, 32, 22, 0.07);
+    }
+
+    .philosophy-number {
+      color: var(--terracotta);
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .philosophy-card h4 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.45rem, 2vw, 2.05rem);
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .philosophy-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .philosophy-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .philosophy-tags span {
+      border: 1px solid rgba(80, 60, 40, 0.25);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.35);
+      padding: 6px 10px;
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 780;
+    }
+
     .work-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -781,6 +946,9 @@
     }
 
     .project-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       width: fit-content;
       border-bottom: 1px solid rgba(255, 247, 232, 0.48);
       color: #fff7e8;
@@ -840,6 +1008,9 @@
     .article-card small {
       position: relative;
       z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       color: var(--terracotta);
       font-size: 0.72rem;
       font-weight: 900;
@@ -892,6 +1063,30 @@
       background: var(--ink);
       color: var(--paper);
       transition: transform 180ms ease;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: clamp(14px, 3vw, 28px);
+      bottom: clamp(14px, 3vw, 28px);
+      z-index: 40;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 247, 232, 0.26);
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: 0 18px 46px rgba(45, 32, 22, 0.22);
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .back-to-top:hover,
+    .back-to-top:focus-visible {
+      transform: translateY(-3px);
+      background: #000;
+      outline: none;
     }
 
     .article-card:hover .arrow {
@@ -1064,7 +1259,7 @@
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 14px;
     }
 
@@ -1077,6 +1272,12 @@
       background: rgba(255, 250, 241, 0.62);
       padding: 22px;
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .contact-card small {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .contact-card:hover {
@@ -1139,7 +1340,16 @@
       .manifesto,
       .about-grid,
       .resume-panel,
+      .philosophy-section,
       .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .philosophy-section h2 {
+        position: static;
+      }
+
+      .philosophy-cards {
         grid-template-columns: 1fr;
       }
 
@@ -1191,6 +1401,36 @@
         display: none;
       }
 
+      .menu-toggle {
+        display: grid;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 12px;
+        width: min(320px, calc(100vw - 24px));
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 3px;
+        border: 1px solid rgba(21, 17, 15, 0.12);
+        border-radius: 24px;
+        background: rgba(255, 250, 241, 0.94);
+        padding: 8px;
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a,
+      .nav-links a:not(.contact-link) {
+        display: inline-flex;
+        min-height: 42px;
+      }
+
       .hero h1 {
         font-size: clamp(3.15rem, 17vw, 5rem);
       }
@@ -1214,6 +1454,10 @@
 
       .section {
         padding: 68px 0;
+      }
+
+      .philosophy-section {
+        padding-top: 80px;
       }
 
       .project {
@@ -1255,32 +1499,87 @@
 </head>
 
 <body>
+  <svg class="icon-sprite" aria-hidden="true">
+    <symbol id="icon-linkedin" viewBox="0 0 24 24">
+      <path d="M4.98 3.5a2.5 2.5 0 1 0 0 5.001 2.5 2.5 0 0 0 0-5zM3 9.75h4v10.5H3V9.75zm6.5 0h3.82v1.46h.05c.53-.95 1.84-1.72 3.52-1.72 3.77 0 4.11 2.56 4.11 5.89v4.87h-4v-4.32c0-1.03-.02-2.35-1.43-2.35-1.44 0-2.07 1.12-2.07 2.28v4.39h-4V9.75z"/>
+    </symbol>
+    <symbol id="icon-behance" viewBox="0 0 24 24">
+      <path d="M4 5h6.45c2.5 0 4.05 1.2 4.05 3.12 0 1.25-.62 2.13-1.7 2.62 1.49.42 2.35 1.48 2.35 3.06 0 2.35-1.83 3.7-4.7 3.7H4V5zm3 2.7v2.05h2.9c.95 0 1.5-.38 1.5-1.05 0-.65-.53-1-1.53-1H7zm0 4.55v2.55h3.25c1.14 0 1.72-.43 1.72-1.27 0-.85-.62-1.28-1.86-1.28H7zm9.8-5.9h5.1v1.45h-5.1V6.35zm2.62 3.2c2.73 0 4.48 1.88 4.48 4.75 0 .28-.02.57-.06.88h-6.2c.12 1.05.78 1.65 1.82 1.65.71 0 1.25-.26 1.63-.78h2.58c-.68 1.75-2.22 2.78-4.24 2.78-2.72 0-4.47-1.88-4.47-4.62 0-2.78 1.78-4.66 4.46-4.66zm-1.74 3.93h3.47c-.15-.95-.75-1.5-1.72-1.5-.96 0-1.58.54-1.75 1.5z"/>
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm16 3.2-7.4 5.1a1 1 0 0 1-1.15 0L4 8.2V17h16V8.2zM5.2 7l6.82 4.72L18.85 7H5.2z"/>
+    </symbol>
+    <symbol id="icon-document" viewBox="0 0 24 24">
+      <path d="M6 2h8l5 5v15H6V2zm7 2.2V8h3.8L13 4.2zM8 4v16h9V10h-6V4H8zm2 8h5v2h-5v-2zm0 4h5v2h-5v-2z"/>
+    </symbol>
+    <symbol id="icon-folder" viewBox="0 0 24 24">
+      <path d="M3 5h7.2l2 2H21a1 1 0 0 1 1 1v10.5A2.5 2.5 0 0 1 19.5 21h-15A2.5 2.5 0 0 1 2 18.5V6a1 1 0 0 1 1-1zm1 4v9.5c0 .28.22.5.5.5h15c.28 0 .5-.22.5-.5V9h-8.63l-2-2H4v2z"/>
+    </symbol>
+    <symbol id="icon-location" viewBox="0 0 24 24">
+      <path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7zm0 2a5 5 0 0 0-5 5c0 2.8 2.85 7.1 5 9.75C14.15 16.1 17 11.8 17 9a5 5 0 0 0-5-5zm0 2.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/>
+    </symbol>
+    <symbol id="icon-instagram" viewBox="0 0 24 24">
+      <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9.001 4.5 4.5 0 0 1 0-9.001zm0 2a2.5 2.5 0 1 0 0 5.001 2.5 2.5 0 0 0 0-5.001zm5-2.75a1.25 1.25 0 1 1 0 2.501 1.25 1.25 0 0 1 0-2.501z"/>
+    </symbol>
+    <symbol id="icon-globe" viewBox="0 0 24 24">
+      <path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm-2.35 2.45A8.03 8.03 0 0 0 4.25 11h3.5c.13-2.55.79-4.82 1.9-6.55zM4.25 13a8.03 8.03 0 0 0 5.4 6.55C8.54 17.82 7.88 15.55 7.75 13h-3.5zm5.5 0c.17 3.33 1.25 6 2.25 6s2.08-2.67 2.25-6h-4.5zm0-2h4.5C14.08 7.67 13 5 12 5s-2.08 2.67-2.25 6zm4.6-6.55c1.11 1.73 1.77 4 1.9 6.55h3.5a8.03 8.03 0 0 0-5.4-6.55zM16.25 13c-.13 2.55-.79 4.82-1.9 6.55a8.03 8.03 0 0 0 5.4-6.55h-3.5z"/>
+    </symbol>
+    <symbol id="icon-medium" viewBox="0 0 24 24">
+      <path d="M4 6.5 6.2 9v6L4 17.5v.5h6.25v-.5L8 15V9l4.15 9h.9L17 8.65V16l-1.7 1.5v.5H22v-.5L20.4 16V8l1.6-1.5V6h-4.75l-3.3 7.75L10.35 6H4v.5z"/>
+    </symbol>
+    <symbol id="icon-newspaper" viewBox="0 0 24 24">
+      <path d="M4 5h13a2 2 0 0 1 2 2v1h1a2 2 0 0 1 2 2v7a3 3 0 0 1-3 3H6a4 4 0 0 1-4-4V7a2 2 0 0 1 2-2zm15 13a1 1 0 0 0 1-1v-7h-1v8zM4 7v9a2 2 0 0 0 2 2h11V7H4zm2 2h9v2H6V9zm0 4h4v3H6v-3zm5 0h4v1.5h-4V13zm0 2.5h4V17h-4v-1.5z"/>
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+      <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="m5.64 4.22 6.36 6.36 6.36-6.36 1.42 1.42L13.42 12l6.36 6.36-1.42 1.42L12 13.42l-6.36 6.36-1.42-1.42L10.58 12 4.22 5.64l1.42-1.42z"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+      <path d="m14.7 5.3 6 6a1 1 0 0 1 0 1.4l-6 6-1.4-1.4 4.3-4.3H3v-2h14.6l-4.3-4.3 1.4-1.4z"/>
+    </symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24">
+      <path d="M14 3h7v7h-2V6.42l-9.3 9.29-1.4-1.42L17.58 5H14V3zM5 5h6v2H5v12h12v-6h2v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/>
+    </symbol>
+    <symbol id="icon-download" viewBox="0 0 24 24">
+      <path d="M11 3h2v9.6l3.3-3.3 1.4 1.4-5 5a1 1 0 0 1-1.4 0l-5-5 1.4-1.4 3.3 3.3V3zM4 18h16v2H4v-2z"/>
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 24 24">
+      <path d="m12 4.3 7 7-1.4 1.4L13 8.12V21h-2V8.12l-4.6 4.58L5 11.3l7-7z"/>
+    </symbol>
+  </svg>
   <a class="skip-link" href="#content">Skip to content</a>
 
   <nav class="nav">
     <div class="shell nav-inner">
       <a class="brand" href="#top" aria-label="Go to homepage">
-        <span class="brand-mark">L</span>
+        <img class="brand-mark" src="assets/nav-logo.png" alt="" />
         <span class="brand-copy">
           <strong>Lekha More</strong>
           <span>Architecture + Climate</span>
         </span>
       </a>
 
-      <div class="nav-links" aria-label="Main navigation">
-        <a href="#work">Work</a>
-        <a href="#writing">Writing</a>
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a class="contact-link" href="#contact">Contact</a>
+      <div class="nav-links" id="mainNavigation" aria-label="Main navigation">
+        <a href="#work"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>Work</a>
+        <a href="#writing"><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>Writing</a>
+        <a href="#about"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>About</a>
+        <a href="#resume"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Resume</a>
+        <a class="contact-link" href="#contact"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Contact</a>
       </div>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mainNavigation" aria-expanded="false">
+        <svg class="icon menu-icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+        <svg class="icon close-icon" aria-hidden="true"><use href="#icon-x"></use></svg>
+      </button>
     </div>
   </nav>
 
   <main id="content">
     <section id="top" class="shell hero">
       <div class="hero-copy-block reveal">
-        <div class="eyebrow">M.Arch Graduate · Phoenix Based</div>
+        <div class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>M.Arch Graduate · Phoenix Based</div>
         <h1>
           <span>Architecture as</span>
           <span><em>climate</em>, memory</span>
@@ -1290,9 +1589,9 @@
           I design through thresholds, shade, reuse, and atmosphere, moving between ecological urbanism, architectural storytelling, research, and technical growth in Revit-driven practice.
         </p>
         <div class="hero-actions">
-          <a class="btn dark" href="#work">Enter Portfolio</a>
-          <a class="btn" href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer">Full PDF Portfolio</a>
-          <a class="btn" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
+          <a class="btn dark" href="#work">Enter Portfolio <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
+          <a class="btn" href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>Full PDF Portfolio <svg class="icon small" aria-hidden="true"><use href="#icon-external"></use></svg></a>
+          <a class="btn" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Resume <svg class="icon small" aria-hidden="true"><use href="#icon-external"></use></svg></a>
         </div>
 
         <div class="hero-stats" aria-label="Portfolio highlights">
@@ -1351,6 +1650,69 @@
       </div>
     </section>
 
+    <section class="shell section philosophy-section">
+      <h2 class="reveal">Philosophy</h2>
+
+      <div class="philosophy-body">
+        <h3 class="reveal">Architecture should listen before it speaks.</h3>
+
+        <div class="philosophy-copy reveal">
+          <p>
+            My work is rooted in the belief that architecture is not just an object placed on land, but a living mediator between people, climate, ecology, and memory. I am drawn to spaces that filter light, invite air, hold shade, revive water, and create a sense of belonging.
+          </p>
+
+          <p>
+            Growing up in Mumbai and studying within the desert landscape of Arizona shaped my understanding of density, heat, adaptation, and community. Through projects like ECS and Colony_518, I explore architecture as a responsive system, one that protects fragile environments while creating meaningful human thresholds.
+          </p>
+
+          <p>
+            I am interested in design that does not overpower its context, but listens to it, learns from it, and gently transforms it.
+          </p>
+        </div>
+
+        <div class="philosophy-cards reveal">
+          <article class="philosophy-card">
+            <span class="philosophy-number">01</span>
+            <h4>Climate as Material</h4>
+            <p>
+              Heat, shade, wind, water, and light are not background conditions in my work. They become active design materials that shape comfort, form, and atmosphere.
+            </p>
+            <div class="philosophy-tags">
+              <span>Shade</span>
+              <span>Cooling</span>
+              <span>Light</span>
+            </div>
+          </article>
+
+          <article class="philosophy-card">
+            <span class="philosophy-number">02</span>
+            <h4>Architecture as Threshold</h4>
+            <p>
+              I am drawn to spaces that sit between conditions, city and ecology, body and climate, public and private, permanence and movement.
+            </p>
+            <div class="philosophy-tags">
+              <span>Transition</span>
+              <span>Memory</span>
+              <span>Belonging</span>
+            </div>
+          </article>
+
+          <article class="philosophy-card">
+            <span class="philosophy-number">03</span>
+            <h4>Community as Ecosystem</h4>
+            <p>
+              I see architecture as a social framework that can support care, shared resilience, and everyday rituals of gathering, protection, and repair.
+            </p>
+            <div class="philosophy-tags">
+              <span>Care</span>
+              <span>Resilience</span>
+              <span>Gathering</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="work" class="shell section">
       <div class="section-head reveal">
         <div>
@@ -1372,7 +1734,7 @@
             </div>
             <h3>Ecological Cooling Shores</h3>
             <p>A Phoenix river-edge framework where architecture becomes an inhabitable filter, inviting cool air while protecting the ecological corridor from artificial light at night.</p>
-            <span class="project-open">View project images</span>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
@@ -1384,7 +1746,7 @@
             </div>
             <h3>Colony_518</h3>
             <p>A floating ecosystem community built above an existing commercial base, focused on water revival, shared life, and resilient desert living.</p>
-            <span class="project-open">View project images</span>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
@@ -1396,7 +1758,7 @@
             </div>
             <h3>High-Rise Residential Work</h3>
             <p>Selected professional practice from India, including high-rise residential planning, facade thinking, coordination, and design development under a principal architect.</p>
-            <span class="project-open">View project images</span>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
@@ -1408,7 +1770,7 @@
             </div>
             <h3>Vertical Facade Systems</h3>
             <p>Research into sloped south facades, vertical fins, and exposed circulation as architectural devices for shade, cooling, ventilation, and resilience.</p>
-            <span class="project-open">View project images</span>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
@@ -1420,7 +1782,7 @@
             </div>
             <h3>Quick Fix Mind</h3>
             <p>A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered design.</p>
-            <span class="project-open">View project images</span>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
@@ -1433,7 +1795,7 @@
             </div>
             <h3>Technical Drawings + Process</h3>
             <p>Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.</p>
-            <span class="project-open">View project images</span>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
       </div>
@@ -1453,61 +1815,61 @@
       <div class="article-grid">
         <a class="article-card featured reveal" style="--wash: rgba(31,83,98,0.25);" href="https://thearchitectsdiary.com/20-skyscraper-design-challenge-and-beauty-of-the-upcoming-era/" target="_blank" rel="noreferrer">
           <div>
-            <small>The Architects Diary</small>
+            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>20 Skyscraper Design Challenge and Beauty of the Upcoming Era</h3>
             <p>Research and writing on vertical urbanism, ambition, construction complexity, and the evolving language of tall buildings.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
-            <span class="arrow">↗</span>
+            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
           </div>
         </a>
 
         <a class="article-card reveal" style="--wash: rgba(104,115,91,0.25);" href="https://thearchitectsdiary.com/eco-friendly-building-materials-20-examples-of-the-latest-trend/" target="_blank" rel="noreferrer">
           <div>
-            <small>The Architects Diary</small>
+            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>Eco-Friendly Building Materials, 20 Examples of the Latest Trend</h3>
             <p>A material-focused article on sustainable construction choices and their role in contemporary design practice.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
-            <span class="arrow">↗</span>
+            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
           </div>
         </a>
 
         <a class="article-card reveal" style="--wash: rgba(71,58,93,0.24);" href="https://thearchitectsdiary.com/floating-city-8-requirements-to-tackle-the-environmental-crisis/" target="_blank" rel="noreferrer">
           <div>
-            <small>The Architects Diary</small>
+            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>Floating City, 8 Requirements to Tackle the Environmental Crisis</h3>
             <p>An exploration of water-based urban futures, resilience, density, infrastructure, and climate adaptation.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
-            <span class="arrow">↗</span>
+            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
           </div>
         </a>
 
         <a class="article-card reveal" style="--wash: rgba(215,174,109,0.30);" href="https://thearchitectsdiary.com/15-buddhist-temples-in-india-a-mystic-hidden-tour/" target="_blank" rel="noreferrer">
           <div>
-            <small>The Architects Diary</small>
+            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>15 Buddhist Temples in India, A Mystic Hidden Tour</h3>
             <p>A cultural and architectural journey through sacred spaces, ritual atmospheres, and historic spatial traditions.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
-            <span class="arrow">↗</span>
+            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
           </div>
         </a>
 
         <a class="article-card featured reveal" style="--wash: rgba(150,77,52,0.25);" href="https://thearchitectsdiary.com/indo-islamic-architecture-a-portrait-of-15-indian-marvels/" target="_blank" rel="noreferrer">
           <div>
-            <small>The Architects Diary</small>
+            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
             <h3>Indo-Islamic Architecture, A Portrait of 15 Indian Marvels</h3>
             <p>Writing on arches, courtyards, ornament, hybridity, monumentality, and the layered architectural memory of the Indian subcontinent.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
-            <span class="arrow">↗</span>
+            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
           </div>
         </a>
       </div>
@@ -1561,8 +1923,8 @@
           </p>
         </div>
         <div class="resume-actions">
-          <a class="btn light" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer">Open Resume</a>
-          <a class="btn light" href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer">Open Portfolio</a>
+          <a class="btn light" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Open Resume <svg class="icon small" aria-hidden="true"><use href="#icon-external"></use></svg></a>
+          <a class="btn light" href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>Open Portfolio <svg class="icon small" aria-hidden="true"><use href="#icon-external"></use></svg></a>
         </div>
       </div>
     </section>
@@ -1590,27 +1952,51 @@
 
         <div class="contact-grid reveal">
   <a class="contact-card" href="mailto:lekhamore@gmail.com">
-    <small>Email</small>
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Email</small>
     <strong>lekhamore@gmail.com</strong>
   </a>
 
   <a class="contact-card" href="https://www.linkedin.com/in/lekha-more" target="_blank" rel="noreferrer">
-    <small>LinkedIn</small>
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-linkedin"></use></svg>LinkedIn</small>
     <strong>linkedin.com/in/lekha-more</strong>
   </a>
 
   <a class="contact-card" href="https://www.behance.net/lekhamore" target="_blank" rel="noreferrer">
-    <small>Behance</small>
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-behance"></use></svg>Behance</small>
     <strong>behance.net/lekhamore</strong>
   </a>
+
+  <a class="contact-card" href="https://www.instagram.com/lekhamore" target="_blank" rel="noreferrer">
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>Instagram</small>
+    <strong>instagram.com/lekhamore</strong>
+  </a>
+
+  <a class="contact-card" href="#writing">
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-medium"></use></svg>Writing</small>
+    <strong>Published architecture essays</strong>
+  </a>
+
+  <a class="contact-card" href="https://lekhamore.github.io" target="_blank" rel="noreferrer">
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-globe"></use></svg>Website</small>
+    <strong>lekhamore.github.io</strong>
+  </a>
+
+  <div class="contact-card">
+    <small><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>Location</small>
+    <strong>Phoenix, Arizona · Open to relocation</strong>
+  </div>
 </div>
       </div>
     </section>
   </main>
 
+  <a class="back-to-top" href="#top" aria-label="Back to top">
+    <svg class="icon" aria-hidden="true"><use href="#icon-arrow-up"></use></svg>
+  </a>
+
   <div class="project-modal" id="projectModal" aria-hidden="true">
     <div class="project-modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="close-modal" id="closeModal" type="button" aria-label="Close project gallery">×</button>
+      <button class="close-modal" id="closeModal" type="button" aria-label="Close project gallery"><svg class="icon" aria-hidden="true"><use href="#icon-x"></use></svg></button>
 
       <div class="project-modal-header">
         <div>
@@ -1635,6 +2021,25 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNavigation = document.getElementById("mainNavigation");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNavigation.classList.toggle("is-open");
+      menuToggle.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    mainNavigation.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNavigation.classList.remove("is-open");
+        menuToggle.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open menu");
+      });
+    });
 
     const projects = {
       ecs: {
