@@ -7,6 +7,20 @@
   <meta name="description" content="Portfolio website of Lekha More, architectural designer and M.Arch graduate working across ecological urbanism, adaptive reuse, climate-conscious design, writing, and spatial storytelling." />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S98Z7YCSLX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-S98Z7YCSLX");
+  </script>
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wwlzrhevvj");
+  </script>
 
   <style>
     .work-grid {
@@ -500,6 +514,22 @@
       display: block;
     }
 
+    .hero-title {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-role {
+      max-width: 760px;
+      color: var(--terracotta);
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 3vw, 3.25rem);
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
     .hero h1 em {
       color: var(--terracotta);
       font-style: italic;
@@ -512,6 +542,25 @@
       font-size: clamp(1.06rem, 1.8vw, 1.24rem);
     }
 
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 24px;
+    }
+
+    .hero-tags span {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(21, 17, 15, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.62);
+      padding: 8px 11px;
+      color: var(--text);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
@@ -521,9 +570,9 @@
 
     .hero-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 12px;
-      max-width: 680px;
+      max-width: 960px;
       margin-top: 36px;
     }
 
@@ -545,7 +594,7 @@
       display: block;
       margin-top: 4px;
       color: var(--muted);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
     }
 
     .hero-visual {
@@ -833,6 +882,79 @@
       color: var(--text);
       font-size: 0.78rem;
       font-weight: 780;
+    }
+
+    .featured-project {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 18px;
+    }
+
+    .featured-project-copy,
+    .featured-project-proof {
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 250, 241, 0.68);
+      box-shadow: var(--shadow);
+    }
+
+    .featured-project-copy {
+      display: grid;
+      align-content: end;
+      min-height: 460px;
+      padding: clamp(28px, 5vw, 58px);
+      color: #fff7e8;
+      background:
+        linear-gradient(to top, rgba(9, 11, 13, 0.92), rgba(9, 11, 13, 0.24)),
+        url("assets/project-ecs.jpg") center / cover;
+      overflow: hidden;
+    }
+
+    .featured-project-copy h3 {
+      max-width: 780px;
+      margin-top: 14px;
+      font-family: var(--serif);
+      font-size: clamp(2.45rem, 5vw, 5.9rem);
+      font-weight: 500;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    .featured-project-copy p {
+      max-width: 760px;
+      margin-top: 18px;
+      color: rgba(255, 247, 232, 0.82);
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+    }
+
+    .featured-project-proof {
+      display: grid;
+      gap: 22px;
+      align-content: center;
+      padding: clamp(24px, 4vw, 44px);
+    }
+
+    .featured-project-proof h4,
+    .bring-card h3,
+    .experience-item h3 {
+      font-size: 1.02rem;
+      letter-spacing: -0.02em;
+    }
+
+    .featured-project-proof p,
+    .bring-card p,
+    .experience-item p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .project-meta {
+      display: grid;
+      gap: 8px;
+      color: rgba(255, 247, 232, 0.78);
+      font-size: 0.9rem;
     }
 
     .work-grid {
@@ -1164,6 +1286,69 @@
       font-size: 1.04rem;
     }
 
+    .bring-grid,
+    .experience-timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .bring-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .bring-card,
+    .experience-item {
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 241, 0.66);
+      padding: 22px;
+      box-shadow: 0 18px 54px rgba(45, 32, 22, 0.08);
+    }
+
+    .bring-card {
+      min-height: 250px;
+      display: grid;
+      align-content: space-between;
+      gap: 20px;
+    }
+
+    .bring-card .icon {
+      color: var(--terracotta);
+      width: 1.45rem;
+      height: 1.45rem;
+    }
+
+    .experience-timeline {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      counter-reset: experience;
+    }
+
+    .experience-item {
+      position: relative;
+      min-height: 210px;
+    }
+
+    .experience-item::before {
+      counter-increment: experience;
+      content: "0" counter(experience);
+      display: block;
+      margin-bottom: 28px;
+      color: var(--terracotta);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+    }
+
+    .experience-item time {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
     .skills {
       display: flex;
       flex-wrap: wrap;
@@ -1341,6 +1526,7 @@
       .about-grid,
       .resume-panel,
       .philosophy-section,
+      .featured-project,
       .section-head {
         grid-template-columns: 1fr;
       }
@@ -1381,6 +1567,11 @@
 
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .bring-grid,
+      .experience-timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -1436,6 +1627,11 @@
       }
 
       .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .bring-grid,
+      .experience-timeline {
         grid-template-columns: 1fr;
       }
 
@@ -1563,9 +1759,11 @@
 
       <div class="nav-links" id="mainNavigation" aria-label="Main navigation">
         <a href="#work"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>Work</a>
+        <a href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-download"></use></svg>Portfolio</a>
+        <a href="#philosophy"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>Philosophy</a>
         <a href="#writing"><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>Writing</a>
-        <a href="#about"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>About</a>
-        <a href="#resume"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Resume</a>
+        <a href="#experience"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg>Experience</a>
+        <a href="#skills"><svg class="icon" aria-hidden="true"><use href="#icon-behance"></use></svg>Skills</a>
         <a class="contact-link" href="#contact"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>Contact</a>
       </div>
 
@@ -1579,15 +1777,20 @@
   <main id="content">
     <section id="top" class="shell hero">
       <div class="hero-copy-block reveal">
-        <div class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>M.Arch Graduate · Phoenix Based</div>
-        <h1>
-          <span>Architecture as</span>
-          <span><em>climate</em>, memory</span>
-          <span>and care.</span>
-        </h1>
+        <div class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>Phoenix, Arizona · Open to Relocation</div>
+        <div class="hero-title">
+          <h1>Lekha More</h1>
+          <p class="hero-role">Architectural Designer, Researcher, Writer, and Visual Storyteller</p>
+        </div>
         <p class="hero-copy">
-          I design through thresholds, shade, reuse, and atmosphere, moving between ecological urbanism, architectural storytelling, research, and technical growth in Revit-driven practice.
+          I design through climate, memory, material intelligence, and human experience, moving between architecture, adaptive reuse, writing, teaching, and emerging design technologies.
         </p>
+        <div class="hero-tags" aria-label="Professional profile tags">
+          <span>M.Arch, Arizona State University</span>
+          <span>Phoenix, Arizona</span>
+          <span>Open to Relocation</span>
+          <span>Architecture + Research + Writing + AI/UX</span>
+        </div>
         <div class="hero-actions">
           <a class="btn dark" href="#work">Enter Portfolio <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
           <a class="btn" href="assets/Lekha-More-Portfolio.pdf" target="_blank" rel="noreferrer"><svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>Full PDF Portfolio <svg class="icon small" aria-hidden="true"><use href="#icon-external"></use></svg></a>
@@ -1596,16 +1799,24 @@
 
         <div class="hero-stats" aria-label="Portfolio highlights">
           <div class="stat">
-            <strong>M.Arch</strong>
-            <span>Arizona State University</span>
+            <strong>M.Arch, ASU</strong>
+            <span>Graduate of Arizona State University, 2026</span>
           </div>
           <div class="stat">
-            <strong>2 yrs</strong>
-            <span>Professional practice in India</span>
+            <strong>Teaching Assistant</strong>
+            <span>Design Awareness, Herberger Institute</span>
           </div>
           <div class="stat">
-            <strong>5+</strong>
-            <span>Published architecture articles</span>
+            <strong>Published Writer</strong>
+            <span>Architectural articles for The Architects Diary</span>
+          </div>
+          <div class="stat">
+            <strong>2 Years Practice</strong>
+            <span>Residential and high-rise design experience in India</span>
+          </div>
+          <div class="stat">
+            <strong>Design Tools</strong>
+            <span>Revit, Rhino, Adobe Suite, AI visualization, UI/UX workflows</span>
           </div>
         </div>
       </div>
@@ -1618,40 +1829,129 @@
       </aside>
     </section>
 
-    <section class="shell section">
-      <div class="manifesto">
-        <article class="manifesto-card manifesto-quote reveal">
-          <p>Not a building as an object, but a <em>filter</em> between heat, light, water, and people.</p>
-        </article>
+    <section id="work" class="shell section">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Selected Portfolio</div>
+          <h2>Selected Work</h2>
+        </div>
+        <p>
+          Projects selected for what they prove: climate-conscious thinking, research depth, technical growth, visual communication, and a clear architectural voice.
+        </p>
+      </div>
 
-        <div class="manifesto-card manifesto-list reveal">
-          <div class="rule">
-            <b>01</b>
-            <div>
-              <h3>Design the threshold first.</h3>
-              <p>My work often begins at the edge, where public life, climate, privacy, and ecology negotiate with each other.</p>
-            </div>
+      <article class="featured-project reveal">
+        <div class="featured-project-copy">
+          <div class="tags">
+            <span class="tag">Featured Project</span>
+            <span class="tag">Thesis</span>
+            <span class="tag">Phoenix Salt River</span>
           </div>
-          <div class="rule">
-            <b>02</b>
-            <div>
-              <h3>Let climate become spatial logic.</h3>
-              <p>Shade, airflow, solar control, darkness, and material behavior become active design generators.</p>
-            </div>
-          </div>
-          <div class="rule">
-            <b>03</b>
-            <div>
-              <h3>Make drawings carry emotion and evidence.</h3>
-              <p>I use diagrams, sections, renders, and writing to make architecture legible, atmospheric, and persuasive.</p>
-            </div>
+          <h3>Ecological Cooling Shores</h3>
+          <p>A nocturnal urbanism strategy for Phoenix's Salt River, exploring shade, airflow, darkness, and ecological thresholds through modular architecture.</p>
+          <div class="project-meta">
+            <span><strong>What it is:</strong> A modular shoreline system of arched ribs, tensile filtering layers, shade, breeze, and sectional rules.</span>
+            <span><strong>What it does:</strong> Protects the Salt River corridor from artificial light at night, heat stress, and noise while creating inhabitable public thresholds.</span>
           </div>
         </div>
+        <div class="featured-project-proof">
+          <div>
+            <div class="kicker">What it shows</div>
+            <h4>Climate-responsive design, urban research, sectional thinking, environmental ethics, AI-assisted visualization, and narrative sequencing.</h4>
+          </div>
+          <p>
+            ECS carries the clearest version of my design voice: Phoenix, night, ecology, and architecture treated as one connected system rather than separate topics.
+          </p>
+          <button class="btn dark" type="button" data-project="ecs">View ECS gallery <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></button>
+        </div>
+      </article>
+
+      <div class="work-grid">
+        <button class="project narrow reveal" type="button" data-project="colony518" style="--project-bg: linear-gradient(135deg, #1f3340, #c58d61);">
+          <div class="project-content">
+            <div class="tags">
+              <span class="tag">Adaptive Reuse</span>
+              <span class="tag">Community</span>
+            </div>
+            <h3>Colony_518</h3>
+            <p>A sustainable adaptive reuse proposal exploring water revival, vertical community, and self-sustaining ecological systems.</p>
+            <div class="project-meta">
+              <span><strong>Role:</strong> Research, concept development, facade strategy, diagrams, visual narrative</span>
+              <span><strong>Skills shown:</strong> Adaptive reuse, sustainability, community design, desert-climate thinking</span>
+            </div>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </button>
+
+        <button class="project reveal" type="button" data-project="highRiseResidential" style="--project-bg: linear-gradient(135deg, #d7ae6d, #78553d);">
+          <div class="project-content">
+            <div class="tags">
+              <span class="tag">Professional</span>
+              <span class="tag">Residential</span>
+            </div>
+            <h3>High-Rise Residential Work</h3>
+            <p>Residential and high-rise design workflows from professional practice in India, connecting planning, facade thinking, coordination, and design development.</p>
+            <div class="project-meta">
+              <span><strong>Role:</strong> Design support, drawings, coordination, facade studies</span>
+              <span><strong>Skills shown:</strong> Residential systems, documentation logic, Revit growth, professional collaboration</span>
+            </div>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </button>
+
+        <button class="project reveal" type="button" data-project="verticalFacadeSystems" style="--project-bg: linear-gradient(135deg, #eadcc8, #1f5362);">
+          <div class="project-content">
+            <div class="tags">
+              <span class="tag">Facade Research</span>
+              <span class="tag">Desert Climate</span>
+            </div>
+            <h3>Vertical Facade Systems</h3>
+            <p>A facade research study exploring south-facing slopes, vertical fins, and exposed circulation as devices for shade, cooling, ventilation, and resilience.</p>
+            <div class="project-meta">
+              <span><strong>Role:</strong> Environmental research, section studies, facade strategy</span>
+              <span><strong>Skills shown:</strong> Climate analysis, technical diagrams, solar logic, desert responsiveness</span>
+            </div>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </button>
+
+        <button class="project narrow reveal" type="button" data-project="quickFixMind" style="--project-bg: linear-gradient(135deg, #473a5d, #d7ae6d);">
+          <div class="project-content">
+            <div class="tags">
+              <span class="tag">UI/UX</span>
+              <span class="tag">Wellness</span>
+            </div>
+            <h3>Quick Fix Mind</h3>
+            <p>A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered interface design.</p>
+            <div class="project-meta">
+              <span><strong>Role:</strong> UX concept, user journeys, visual system, interaction logic</span>
+              <span><strong>Skills shown:</strong> Human-centered design, interface thinking, emotional mapping, design systems</span>
+            </div>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </button>
+
+        <button class="project wide reveal" type="button" data-project="technicalDrawings" style="--project-bg: linear-gradient(135deg, #f5ead8, #964d34);">
+          <div class="project-content">
+            <div class="tags">
+              <span class="tag">Technical</span>
+              <span class="tag">Revit</span>
+              <span class="tag">Drawings</span>
+            </div>
+            <h3>Technical Drawings + Process</h3>
+            <p>Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.</p>
+            <div class="project-meta">
+              <span><strong>Role:</strong> Drafting, drawing organization, process documentation</span>
+              <span><strong>Skills shown:</strong> Technical clarity, Revit workflows, spatial communication, drawing discipline</span>
+            </div>
+            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </button>
       </div>
     </section>
 
-    <section class="shell section philosophy-section">
-      <h2 class="reveal">Philosophy</h2>
+    <section id="philosophy" class="shell section philosophy-section">
+      <h2 class="reveal">Design Philosophy</h2>
 
       <div class="philosophy-body">
         <h3 class="reveal">Architecture should listen before it speaks.</h3>
@@ -1713,102 +2013,14 @@
       </div>
     </section>
 
-    <section id="work" class="shell section">
-      <div class="section-head reveal">
-        <div>
-          <div class="kicker">Selected Portfolio</div>
-          <h2>Projects that operate like systems, shelters, and arguments.</h2>
-        </div>
-        <p>
-          A selection of academic, professional, research, and visual work across ecological urbanism, adaptive reuse, facade systems, housing, and design communication.
-        </p>
-      </div>
-
-      <div class="work-grid">
-        <button class="project wide reveal" type="button" data-project="ecs" style="--project-bg: linear-gradient(135deg, rgba(17,26,35,0.20), rgba(150,77,52,0.45)), url('assets/project-ecs.jpg');">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">Thesis</span>
-              <span class="tag">Nocturnal Urbanism</span>
-              <span class="tag">Salt River</span>
-            </div>
-            <h3>Ecological Cooling Shores</h3>
-            <p>A Phoenix river-edge framework where architecture becomes an inhabitable filter, inviting cool air while protecting the ecological corridor from artificial light at night.</p>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-
-        <button class="project narrow reveal" type="button" data-project="colony518" style="--project-bg: linear-gradient(135deg, #1f3340, #c58d61);">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">Adaptive Reuse</span>
-              <span class="tag">Community</span>
-            </div>
-            <h3>Colony_518</h3>
-            <p>A floating ecosystem community built above an existing commercial base, focused on water revival, shared life, and resilient desert living.</p>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-
-        <button class="project reveal" type="button" data-project="highRiseResidential" style="--project-bg: linear-gradient(135deg, #d7ae6d, #78553d);">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">Professional</span>
-              <span class="tag">Residential</span>
-            </div>
-            <h3>High-Rise Residential Work</h3>
-            <p>Selected professional practice from India, including high-rise residential planning, facade thinking, coordination, and design development under a principal architect.</p>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-
-        <button class="project reveal" type="button" data-project="verticalFacadeSystems" style="--project-bg: linear-gradient(135deg, #eadcc8, #1f5362);">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">Facade Research</span>
-              <span class="tag">Desert Climate</span>
-            </div>
-            <h3>Vertical Facade Systems</h3>
-            <p>Research into sloped south facades, vertical fins, and exposed circulation as architectural devices for shade, cooling, ventilation, and resilience.</p>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-
-        <button class="project narrow reveal" type="button" data-project="quickFixMind" style="--project-bg: linear-gradient(135deg, #473a5d, #d7ae6d);">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">UI/UX</span>
-              <span class="tag">Wellness</span>
-            </div>
-            <h3>Quick Fix Mind</h3>
-            <p>A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered design.</p>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-
-        <button class="project wide reveal" type="button" data-project="technicalDrawings" style="--project-bg: linear-gradient(135deg, #f5ead8, #964d34);">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">Technical</span>
-              <span class="tag">Revit</span>
-              <span class="tag">Drawings</span>
-            </div>
-            <h3>Technical Drawings + Process</h3>
-            <p>Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.</p>
-            <span class="project-open">View project images <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-      </div>
-    </section>
-
     <section id="writing" class="shell section">
       <div class="section-head reveal">
         <div>
           <div class="kicker">Published Writing</div>
-          <h2>Architecture through research, history, ecology, and cultural memory.</h2>
+          <h2>Writing and Publications</h2>
         </div>
         <p>
-          Published articles that connect architectural research, sustainability, urban futures, sacred spaces, and Indian architectural history.
+          Published articles that show how I research, explain, and communicate architecture across urban futures, sustainability, and material culture.
         </p>
       </div>
 
@@ -1816,8 +2028,8 @@
         <a class="article-card featured reveal" style="--wash: rgba(31,83,98,0.25);" href="https://thearchitectsdiary.com/20-skyscraper-design-challenge-and-beauty-of-the-upcoming-era/" target="_blank" rel="noreferrer">
           <div>
             <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
-            <h3>20 Skyscraper Design Challenge and Beauty of the Upcoming Era</h3>
-            <p>Research and writing on vertical urbanism, ambition, construction complexity, and the evolving language of tall buildings.</p>
+            <h3>20 Skyscraper Design: Challenge and Beauty of the Upcoming Era</h3>
+            <p>Research and writing on vertical urbanism, high-rise design, and the evolving role of skyscrapers in contemporary cities.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
@@ -1828,8 +2040,8 @@
         <a class="article-card reveal" style="--wash: rgba(104,115,91,0.25);" href="https://thearchitectsdiary.com/eco-friendly-building-materials-20-examples-of-the-latest-trend/" target="_blank" rel="noreferrer">
           <div>
             <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
-            <h3>Eco-Friendly Building Materials, 20 Examples of the Latest Trend</h3>
-            <p>A material-focused article on sustainable construction choices and their role in contemporary design practice.</p>
+            <h3>Eco-Friendly Building Materials: 20 Examples of the Latest Trend</h3>
+            <p>A material-focused article exploring sustainable construction practices and emerging ecological design choices.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
@@ -1840,38 +2052,98 @@
         <a class="article-card reveal" style="--wash: rgba(71,58,93,0.24);" href="https://thearchitectsdiary.com/floating-city-8-requirements-to-tackle-the-environmental-crisis/" target="_blank" rel="noreferrer">
           <div>
             <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
-            <h3>Floating City, 8 Requirements to Tackle the Environmental Crisis</h3>
-            <p>An exploration of water-based urban futures, resilience, density, infrastructure, and climate adaptation.</p>
+            <h3>Floating City: 8 Requirements to Tackle the Environmental Crisis</h3>
+            <p>Research on speculative urban futures, water-based settlement, and climate-responsive city-making.</p>
           </div>
           <div class="article-bottom">
             <span>Open article</span>
             <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
           </div>
         </a>
+      </div>
+    </section>
 
-        <a class="article-card reveal" style="--wash: rgba(215,174,109,0.30);" href="https://thearchitectsdiary.com/15-buddhist-temples-in-india-a-mystic-hidden-tour/" target="_blank" rel="noreferrer">
-          <div>
-            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
-            <h3>15 Buddhist Temples in India, A Mystic Hidden Tour</h3>
-            <p>A cultural and architectural journey through sacred spaces, ritual atmospheres, and historic spatial traditions.</p>
-          </div>
-          <div class="article-bottom">
-            <span>Open article</span>
-            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
-          </div>
-        </a>
+    <section id="experience" class="shell section">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Experience</div>
+          <h2>A compact timeline of study, teaching, writing, and practice.</h2>
+        </div>
+        <p>
+          A cleaner website version of the chronology recruiters look for, without turning the portfolio into a resume.
+        </p>
+      </div>
 
-        <a class="article-card featured reveal" style="--wash: rgba(150,77,52,0.25);" href="https://thearchitectsdiary.com/indo-islamic-architecture-a-portrait-of-15-indian-marvels/" target="_blank" rel="noreferrer">
+      <div class="experience-timeline reveal">
+        <article class="experience-item">
+          <time>2026</time>
+          <h3>M.Arch, Arizona State University</h3>
+          <p>Graduate architectural study focused on ecological urbanism, adaptive reuse, desert climate, and spatial storytelling.</p>
+        </article>
+
+        <article class="experience-item">
+          <time>2025-2026</time>
+          <h3>Teaching Assistant, DSC 101 Design Awareness</h3>
+          <p>Herberger Institute teaching support across design awareness, creative process, visual communication, and student critique.</p>
+        </article>
+
+        <article class="experience-item">
+          <time>2023-2024</time>
+          <h3>Architectural Content Writer, The Architects Diary</h3>
+          <p>Published research-led articles on tall buildings, sustainable materials, floating cities, and architectural history.</p>
+        </article>
+
+        <article class="experience-item">
+          <time>India Practice Experience</time>
+          <h3>Architectural Designer</h3>
+          <p>Experience in residential, interior, and high-rise design workflows, including drawings, coordination, and design development.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="shell section">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Skills</div>
+          <h2>What I Bring</h2>
+        </div>
+        <p>
+          A connected set of skills across architecture, research, publication, visual communication, and emerging design workflows.
+        </p>
+      </div>
+
+      <div class="bring-grid reveal">
+        <article class="bring-card">
+          <svg class="icon" aria-hidden="true"><use href="#icon-folder"></use></svg>
           <div>
-            <small><svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>The Architects Diary</small>
-            <h3>Indo-Islamic Architecture, A Portrait of 15 Indian Marvels</h3>
-            <p>Writing on arches, courtyards, ornament, hybridity, monumentality, and the layered architectural memory of the Indian subcontinent.</p>
+            <h3>Architectural Design</h3>
+            <p>Climate-responsive design, adaptive reuse, residential systems, spatial storytelling, and schematic development.</p>
           </div>
-          <div class="article-bottom">
-            <span>Open article</span>
-            <span class="arrow"><svg class="icon" aria-hidden="true"><use href="#icon-external"></use></svg></span>
+        </article>
+
+        <article class="bring-card">
+          <svg class="icon" aria-hidden="true"><use href="#icon-newspaper"></use></svg>
+          <div>
+            <h3>Research and Writing</h3>
+            <p>Architectural research, published articles, theoretical framing, environmental narratives, and design communication.</p>
           </div>
-        </a>
+        </article>
+
+        <article class="bring-card">
+          <svg class="icon" aria-hidden="true"><use href="#icon-behance"></use></svg>
+          <div>
+            <h3>Visualization and Graphics</h3>
+            <p>Portfolio boards, diagrams, presentation design, publication graphics, and visual identity systems.</p>
+          </div>
+        </article>
+
+        <article class="bring-card">
+          <svg class="icon" aria-hidden="true"><use href="#icon-globe"></use></svg>
+          <div>
+            <h3>AI, UX, and Emerging Tools</h3>
+            <p>AI-assisted visualization, UX thinking, interface logic, user journeys, and design systems.</p>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -2047,7 +2319,7 @@
         category: "Thesis / Nocturnal Urbanism",
         folder: "assets/ecs",
         description:
-          "A Phoenix river-edge framework where architecture becomes an inhabitable filter, inviting cool air while protecting the ecological corridor from artificial light at night.",
+          "A nocturnal urbanism strategy for Phoenix's Salt River, exploring shade, airflow, darkness, and ecological thresholds through modular architecture.",
         images: [
           "assets/ecs/01.jpg",
           "assets/ecs/02.jpg",
@@ -2063,7 +2335,7 @@
         category: "Adaptive Reuse / Community",
         folder: "assets/colony-518",
         description:
-          "A floating ecosystem community built above an existing commercial base, focused on water revival, shared life, and resilient desert living.",
+          "A sustainable adaptive reuse proposal exploring water revival, vertical community, and self-sustaining ecological systems.",
         images: []
       },
       highRiseResidential: {
@@ -2071,7 +2343,7 @@
         category: "Professional / Residential",
         folder: "assets/high-rise-residential",
         description:
-          "Selected professional practice from India, including high-rise residential planning, facade thinking, coordination, and design development under a principal architect.",
+          "Residential and high-rise design workflows from professional practice in India, connecting planning, facade thinking, coordination, and design development.",
         images: []
       },
       verticalFacadeSystems: {
