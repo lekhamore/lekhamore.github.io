@@ -1001,77 +1001,59 @@
 
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
     }
 
     .project {
-      position: relative;
-      grid-column: span 6;
-      min-height: 500px;
+      display: grid;
+      grid-template-rows: auto 1fr;
       overflow: hidden;
-      border: 1px solid rgba(21, 17, 15, 0.10);
-      border-radius: var(--radius-xl);
-      background: var(--night);
-      box-shadow: var(--shadow);
-      color: inherit;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 241, 0.68);
+      box-shadow: 0 18px 54px rgba(45, 32, 22, 0.08);
+      color: var(--text);
       cursor: pointer;
       font: inherit;
-      isolation: isolate;
       padding: 0;
       text-align: left;
-      transition: transform 180ms ease, border-color 180ms ease;
+      transition: transform 190ms ease, border-color 190ms ease, box-shadow 190ms ease;
     }
 
     .project:hover,
     .project:focus-visible {
-      transform: translateY(-3px);
-      border-color: rgba(255, 247, 232, 0.26);
+      transform: translateY(-5px);
+      border-color: rgba(160, 79, 55, 0.32);
+      box-shadow: 0 26px 74px rgba(45, 32, 22, 0.14);
       outline: none;
     }
 
-    .project.wide {
-      grid-column: span 8;
+    .project-image {
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      background: rgba(21, 17, 15, 0.08);
     }
 
-    .project.narrow {
-      grid-column: span 4;
-    }
-
-    .project::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      background: var(--project-bg);
-      background-size: cover;
-      background-position: center;
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
       transition: transform 650ms cubic-bezier(.2,.7,.2,1), filter 650ms ease;
     }
 
-    .project::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background:
-        linear-gradient(to top, rgba(9, 11, 13, 0.90), rgba(9, 11, 13, 0.26), rgba(9, 11, 13, 0.03)),
-        radial-gradient(circle at 74% 12%, rgba(215, 174, 109, 0.30), transparent 18%);
-    }
-
-    .project:hover::before {
-      transform: scale(1.055);
-      filter: saturate(1.12) contrast(1.04);
+    .project:hover .project-image img,
+    .project:focus-visible .project-image img {
+      transform: scale(1.045);
+      filter: saturate(1.08) contrast(1.03);
     }
 
     .project-content {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 22px;
       display: grid;
-      gap: 14px;
-      color: #fff7e8;
+      align-content: start;
+      gap: 12px;
+      padding: 24px;
     }
 
     .tags {
@@ -1095,10 +1077,32 @@
       backdrop-filter: blur(16px);
     }
 
+    .project-subtitle {
+      color: var(--terracotta);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .project-type {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.44);
+      padding: 7px 10px;
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
     .project h3 {
       max-width: 760px;
       font-family: var(--serif);
-      font-size: clamp(2.05rem, 4.2vw, 4.4rem);
+      font-size: clamp(2rem, 3vw, 3.2rem);
       font-weight: 500;
       line-height: 0.92;
       letter-spacing: -0.055em;
@@ -1106,7 +1110,9 @@
 
     .project p {
       max-width: 630px;
-      color: rgba(255, 247, 232, 0.75);
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.58;
     }
 
     .project-open {
@@ -1114,7 +1120,11 @@
       align-items: center;
       gap: 8px;
       width: fit-content;
-      border-bottom: 1px solid rgba(255, 247, 232, 0.48);
+      margin-top: 4px;
+      border: 1px solid rgba(21, 17, 15, 0.14);
+      border-radius: 999px;
+      background: rgba(21, 17, 15, 0.92);
+      padding: 10px 13px;
       color: #fff7e8;
       font-size: 0.78rem;
       font-weight: 900;
@@ -1790,9 +1800,6 @@
         min-height: 540px;
       }
 
-      .project,
-      .project.wide,
-      .project.narrow,
       .article-card,
       .article-card.featured {
         grid-column: span 12;
@@ -1900,7 +1907,8 @@
 
       .bring-grid,
       .skill-categories,
-      .typology-grid {
+      .typology-grid,
+      .work-grid {
         grid-template-columns: 1fr;
       }
 
@@ -2047,7 +2055,7 @@
   <main id="content">
     <section id="top" class="shell hero">
       <div class="hero-copy-block reveal">
-        <div class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>Phoenix, Arizona · Open to Relocation</div>
+        <div class="eyebrow"><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>Tempe, AZ · Open to Relocation</div>
         <div class="hero-title">
           <h1>Lekha More</h1>
           <p class="hero-role">Architectural Designer, Researcher, Writer, and Visual Storyteller</p>
@@ -2057,7 +2065,7 @@
         </p>
         <div class="hero-tags" aria-label="Professional profile tags">
           <span>M.Arch, Arizona State University</span>
-          <span>Phoenix, Arizona</span>
+          <span>Tempe, AZ</span>
           <span>Open to Relocation</span>
           <span>Architecture + Research + Writing + AI/UX</span>
         </div>
@@ -2107,7 +2115,7 @@
           </div>
           <div class="portrait-caption">
             <strong>Designer, researcher, writer.</strong>
-            <p>Originally from Mumbai, currently rooted in Phoenix, working toward a design practice shaped by climate, belonging, and atmosphere.</p>
+            <p>Originally from Mumbai, currently rooted in Tempe, AZ, working toward a design practice shaped by climate, belonging, and atmosphere.</p>
           </div>
         </aside>
 
@@ -2221,111 +2229,69 @@
         </p>
       </div>
 
-      <article class="featured-project reveal">
-        <div class="featured-project-copy">
-          <div class="tags">
-            <span class="tag">Featured Project</span>
-            <span class="tag">Thesis</span>
-            <span class="tag">Phoenix Salt River</span>
-          </div>
-          <h3>Ecological Cooling Shores</h3>
-          <p>A nocturnal urbanism strategy for Phoenix's Salt River, exploring shade, airflow, darkness, and ecological thresholds through modular architecture.</p>
-          <div class="project-meta">
-            <span><strong>What it is:</strong> A modular shoreline system of arched ribs, tensile filtering layers, shade, breeze, and sectional rules.</span>
-            <span><strong>What it does:</strong> Protects the Salt River corridor from artificial light at night, heat stress, and noise while creating inhabitable public thresholds.</span>
-          </div>
-        </div>
-        <div class="featured-project-proof">
-          <div>
-            <div class="kicker">What it shows</div>
-            <h4>Climate-responsive design, urban research, sectional thinking, environmental ethics, AI-assisted visualization, and narrative sequencing.</h4>
-          </div>
-          <p>
-            ECS carries the clearest version of my design voice: Phoenix, night, ecology, and architecture treated as one connected system rather than separate topics.
-          </p>
-          <button class="btn dark" type="button" data-project="ecs">View ECS gallery <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></button>
-        </div>
-      </article>
-
       <div class="work-grid">
-        <button class="project narrow reveal" type="button" data-project="colony518" style="--project-bg: url('assets/project-thumbnails/colony-518.svg');">
+        <button class="project reveal" type="button" data-project="ecs">
+          <div class="project-image">
+            <img src="assets/project-ecs.jpg" alt="ECS project thumbnail" loading="lazy" />
+          </div>
           <div class="project-content">
-            <div class="tags">
-              <span class="tag">Adaptive Reuse</span>
-              <span class="tag">Community</span>
-            </div>
+            <span class="project-subtitle">Spring 2026 · Arizona State University</span>
+            <h3>ECS</h3>
+            <span class="project-type">Climate-responsive urban architecture</span>
+            <p>Ecological Cooling Shores explores architecture as a shaded, breathable threshold between Phoenix, the Salt River, night ecology, and public life.</p>
+            <span class="project-open">View ECS <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+          </div>
+        </button>
+
+        <button class="project reveal" type="button" data-project="colony518">
+          <div class="project-image">
+            <img src="assets/project-thumbnails/colony-518.svg" alt="Colony_518 project thumbnail" loading="lazy" />
+          </div>
+          <div class="project-content">
+            <span class="project-subtitle">Fall 2024 · Arizona State University</span>
             <h3>Colony_518</h3>
-            <p>A sustainable adaptive reuse proposal exploring water revival, vertical community, and self-sustaining ecological systems.</p>
-            <div class="project-meta">
-              <span><strong>Role:</strong> Research, concept development, facade strategy, diagrams, visual narrative</span>
-              <span><strong>Skills shown:</strong> Adaptive reuse, sustainability, community design, desert-climate thinking</span>
-            </div>
-            <span class="project-open">Explore Colony_518 <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-type">Adaptive reuse · Sustainable housing ecosystem</span>
+            <p>Colony_518 proposes a floating high-density community developed above an existing commercial base, focused on sustainability, water revival, and collective living.</p>
+            <span class="project-open">View Colony_518 <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project reveal" type="button" data-project="highRiseResidential" style="--project-bg: url('assets/project-thumbnails/high-rise-residential.svg');">
+        <button class="project reveal" type="button" data-project="impressionTowers">
+          <div class="project-image">
+            <img src="assets/project-thumbnails/impression-towers.svg" alt="Impression Towers project thumbnail" loading="lazy" />
+          </div>
           <div class="project-content">
-            <div class="tags">
-              <span class="tag">Professional</span>
-              <span class="tag">Residential</span>
-            </div>
-            <h3>High-Rise Residential Work</h3>
-            <p>Residential and high-rise design workflows from professional practice in India, connecting planning, facade thinking, coordination, and design development.</p>
-            <div class="project-meta">
-              <span><strong>Role:</strong> Design support, drawings, coordination, facade studies</span>
-              <span><strong>Skills shown:</strong> Residential systems, documentation logic, Revit growth, professional collaboration</span>
-            </div>
-            <span class="project-open">Review High-Rise Work <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-subtitle">Spring 2024 · Arizona State University</span>
+            <h3>Impression Towers</h3>
+            <span class="project-type">Mixed-use high-rise · Net-zero design strategies</span>
+            <p>Impression Towers is a mixed-use high-rise proposal in Phoenix that integrates LEST, phase change materials, double-glazed windows, shaded terraces, and facade systems to reduce heat gain and support a net-zero building approach in the desert climate.</p>
+            <span class="project-open">View Impression Towers <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project reveal" type="button" data-project="verticalFacadeSystems" style="--project-bg: url('assets/project-thumbnails/vertical-facade-systems.svg');">
+        <button class="project reveal" type="button" data-project="colo">
+          <div class="project-image">
+            <img src="assets/project-thumbnails/colo.svg" alt="Colo professional practice project thumbnail" loading="lazy" />
+          </div>
           <div class="project-content">
-            <div class="tags">
-              <span class="tag">Facade Research</span>
-              <span class="tag">Desert Climate</span>
-            </div>
-            <h3>Vertical Facade Systems</h3>
-            <p>A facade research study exploring south-facing slopes, vertical fins, and exposed circulation as devices for shade, cooling, ventilation, and resilience.</p>
-            <div class="project-meta">
-              <span><strong>Role:</strong> Environmental research, section studies, facade strategy</span>
-              <span><strong>Skills shown:</strong> Climate analysis, technical diagrams, solar logic, desert responsiveness</span>
-            </div>
-            <span class="project-open">Study Facade Systems <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-subtitle">Professional Practice · Mumbai · Vilas Avachat Associates</span>
+            <h3>Colo</h3>
+            <span class="project-type">Professional architectural design work</span>
+            <p>Colo represents my professional practice experience in Mumbai, developed under Vilas Avachat Associates, with exposure to residential design, spatial planning, design development, and architectural coordination.</p>
+            <span class="project-open">View Colo <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
 
-        <button class="project narrow reveal" type="button" data-project="quickFixMind" style="--project-bg: url('assets/project-thumbnails/quick-fix-mind.svg');">
+        <button class="project reveal" type="button" data-project="quickFixMind">
+          <div class="project-image">
+            <img src="assets/project-thumbnails/quick-fix-mind.svg" alt="Quick Fix Mind UI/UX project thumbnail" loading="lazy" />
+          </div>
           <div class="project-content">
-            <div class="tags">
-              <span class="tag">UI/UX</span>
-              <span class="tag">Wellness</span>
-            </div>
+            <span class="project-subtitle">Fall 2025 · Arizona State University</span>
             <h3>Quick Fix Mind</h3>
-            <p>A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered interface design.</p>
-            <div class="project-meta">
-              <span><strong>Role:</strong> UX concept, user journeys, visual system, interaction logic</span>
-              <span><strong>Skills shown:</strong> Human-centered design, interface thinking, emotional mapping, design systems</span>
-            </div>
-            <span class="project-open">Open UX Case Study <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
-          </div>
-        </button>
-
-        <button class="project wide reveal" type="button" data-project="technicalDrawings" style="--project-bg: url('assets/project-thumbnails/technical-drawings-process.svg');">
-          <div class="project-content">
-            <div class="tags">
-              <span class="tag">Technical</span>
-              <span class="tag">Revit</span>
-              <span class="tag">Drawings</span>
-            </div>
-            <h3>Technical Drawings + Process</h3>
-            <p>Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.</p>
-            <div class="project-meta">
-              <span><strong>Role:</strong> Drafting, drawing organization, process documentation</span>
-              <span><strong>Skills shown:</strong> Technical clarity, Revit workflows, spatial communication, drawing discipline</span>
-            </div>
-            <span class="project-open">See Drawing Process <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
+            <span class="project-type">UI/UX design · Mental wellness app</span>
+            <p>Quick Fix Mind is a UI/UX project designed around emotional reset, mood-based interaction, and quick mental wellness interventions through simple digital pathways.</p>
+            <span class="project-open">View Quick Fix Mind <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
       </div>
@@ -2475,7 +2441,7 @@
           <div class="experience-card">
             <time>2026</time>
             <h3>M.Arch, Arizona State University</h3>
-            <span class="experience-location">Phoenix, Arizona</span>
+            <span class="experience-location">Tempe, AZ</span>
             <p>Completed graduate architectural study focused on ecological urbanism, adaptive reuse, desert climate, environmental systems, and spatial storytelling. My thesis work, Ecological Cooling Shores, explored architecture as a climate-responsive threshold between city, river, night, and ecology.</p>
           </div>
           <div class="experience-marker" aria-hidden="true">
@@ -2523,7 +2489,7 @@
           <div class="experience-card">
             <time>Ongoing</time>
             <h3>Architectural Designer, Researcher, Writer, and Visual Storyteller</h3>
-            <span class="experience-location">Phoenix, Arizona · Open to relocation</span>
+            <span class="experience-location">Tempe, AZ · Open to relocation</span>
             <p>I work across architecture, climate research, adaptive reuse, writing, visualization, and emerging design technologies, with a focus on creating spaces that respond to heat, memory, material, ecology, and human experience.</p>
           </div>
           <div class="experience-marker" aria-hidden="true">
@@ -2610,7 +2576,7 @@
             <h2>Open to meaningful work, collaboration, and architectural conversations.</h2>
           </div>
           <p>
-            Based in Phoenix, Arizona, and open to architectural design, documentation, research, and visualization opportunities.
+            Based in Tempe, AZ, and open to architectural design, documentation, research, and visualization opportunities.
             Open to architectural designer, junior designer, and design assistant roles.
           </p>
         </div>
@@ -2636,9 +2602,9 @@
     <strong>Open downloadable resume</strong>
   </a>
 
-  <a class="contact-card" href="https://www.instagram.com/lekhamore" target="_blank" rel="noreferrer">
+  <a class="contact-card" href="https://www.instagram.com/lekha_518" target="_blank" rel="noreferrer">
     <small><svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>Instagram</small>
-    <strong>instagram.com/lekhamore</strong>
+    <strong>instagram.com/lekha_518</strong>
   </a>
 
   <a class="contact-card" href="#writing">
@@ -2653,7 +2619,7 @@
 
   <div class="contact-card">
     <small><svg class="icon" aria-hidden="true"><use href="#icon-location"></use></svg>Location</small>
-    <strong>Phoenix, Arizona · Open to relocation</strong>
+    <strong>Tempe, AZ · Open to relocation</strong>
   </div>
 </div>
         <div class="footer-cta reveal">
@@ -2717,11 +2683,11 @@
 
     const projects = {
       ecs: {
-        title: "Ecological Cooling Shores",
-        category: "Thesis / Nocturnal Urbanism",
+        title: "ECS",
+        category: "Climate-responsive urban architecture",
         folder: "assets/ecs",
         description:
-          "A nocturnal urbanism strategy for Phoenix's Salt River, exploring shade, airflow, darkness, and ecological thresholds through modular architecture.",
+          "Ecological Cooling Shores explores architecture as a shaded, breathable threshold between Phoenix, the Salt River, night ecology, and public life.",
         images: [
           "assets/ecs/01.jpg",
           "assets/ecs/02.jpg",
@@ -2732,98 +2698,65 @@
           "assets/ecs/07.jpg"
         ],
         captions: [
-          "Final render: nocturnal shoreline architecture along the Salt River corridor.",
-          "Process image: modular ribs and light-filtering spatial logic.",
-          "Environmental sequence: shade, darkness, breeze, and ecological thresholds.",
-          "Sectional thinking: inhabitable edges between city and river ecology.",
-          "Material atmosphere: tensile filtering layers and night-safe illumination.",
-          "Urban strategy: public cooling moments without overpowering the corridor.",
-          "Narrative board: Phoenix, heat, darkness, and care as design arguments."
+          "Nocturnal shoreline architecture along the Salt River corridor.",
+          "Modular ribs and light-filtering spatial logic.",
+          "Shade, darkness, breeze, and ecological thresholds as design tools.",
+          "Inhabitable edges between city and river ecology.",
+          "Tensile filtering layers and night-sensitive illumination.",
+          "Public cooling moments shaped for the Phoenix river corridor.",
+          "Phoenix, heat, darkness, and care as design arguments."
         ]
       },
       colony518: {
         title: "Colony_518",
-        category: "Adaptive Reuse / Community",
+        category: "Adaptive reuse / Sustainable housing ecosystem",
         folder: "assets/colony-518",
         description:
-          "A sustainable adaptive reuse proposal exploring water revival, vertical community, and self-sustaining ecological systems.",
+          "Colony_518 proposes a floating high-density community developed above an existing commercial base, focused on sustainability, water revival, and collective living.",
         images: [
-          "assets/project-thumbnails/colony-518.svg",
-          "assets/project-thumbnails/colony-518.svg",
           "assets/project-thumbnails/colony-518.svg"
         ],
         captions: [
-          "Process diagram: adaptive reuse massing layered over an existing commercial base.",
-          "Final concept board: vertical community, water revival, and shared ecological life.",
-          "Section and systems view: self-sustaining living, circulation, and collective thresholds."
+          "Adaptive reuse massing layered over an existing commercial base."
         ]
       },
-      highRiseResidential: {
-        title: "High-Rise Residential Work",
-        category: "Professional / Residential",
-        folder: "assets/high-rise-residential",
-        description:
-          "Residential and high-rise design workflows from professional practice in India, connecting planning, facade thinking, coordination, and design development.",
-        images: [
-          "assets/project-thumbnails/high-rise-residential.svg",
-          "assets/project-thumbnails/high-rise-residential.svg",
-          "assets/project-thumbnails/high-rise-residential.svg"
-        ],
-        captions: [
-          "Facade study: residential tower rhythm, elevation logic, and vertical proportion.",
-          "Planning workflow: high-rise residential organization and coordination thinking.",
-          "Professional process: design development support, drawing review, and documentation growth."
-        ]
-      },
-      verticalFacadeSystems: {
-        title: "Vertical Facade Systems",
-        category: "Facade Research / Desert Climate",
+      impressionTowers: {
+        title: "Impression Towers",
+        category: "Mixed-use high-rise / Net-zero design strategies",
         folder: "assets/vertical-facade-systems",
         description:
-          "Research into sloped south facades, vertical fins, and exposed circulation as architectural devices for shade, cooling, ventilation, and resilience.",
+          "Impression Towers is a mixed-use high-rise proposal in Phoenix that integrates LEST, phase change materials, double-glazed windows, shaded terraces, and facade systems to reduce heat gain and support a net-zero building approach in the desert climate.",
         images: [
-          "assets/project-thumbnails/vertical-facade-systems.svg",
-          "assets/project-thumbnails/vertical-facade-systems.svg",
-          "assets/project-thumbnails/vertical-facade-systems.svg"
+          "assets/project-thumbnails/impression-towers.svg"
         ],
         captions: [
-          "Climate diagram: south facade exposure, sun angle, and shade response.",
-          "Facade system: vertical fins as cooling, ventilation, and resilience devices.",
-          "Sectional study: circulation, thermal comfort, and desert-climate performance."
+          "Facade and climate strategy thumbnail for high-rise heat reduction."
+        ]
+      },
+      colo: {
+        title: "Colo",
+        category: "Professional architectural design work",
+        folder: "assets/high-rise-residential",
+        description:
+          "Colo represents my professional practice experience in Mumbai, developed under Vilas Avachat Associates, with exposure to residential design, spatial planning, design development, and architectural coordination.",
+        images: [
+          "assets/project-thumbnails/colo.svg"
+        ],
+        captions: [
+          "Professional practice work across residential planning, facade thinking, and coordination."
         ]
       },
       quickFixMind: {
         title: "Quick Fix Mind",
-        category: "UI/UX / Wellness",
+        category: "UI/UX design / Mental wellness app",
         folder: "assets/quick-fix-mind",
         description:
-          "A mood-based micro-intervention app exploring emotional reset, mindfulness, shared states, and accessible human-centered design.",
+          "Quick Fix Mind is a UI/UX project designed around emotional reset, mood-based interaction, and quick mental wellness interventions through simple digital pathways.",
         images: [
-          "assets/project-thumbnails/quick-fix-mind.svg",
-          "assets/project-thumbnails/quick-fix-mind.svg",
           "assets/project-thumbnails/quick-fix-mind.svg"
         ],
         captions: [
-          "User journey: mood-based entry points and emotional reset pathways.",
-          "Interface logic: small, accessible micro-interventions for everyday use.",
-          "Visual system: soft states, shared moods, and human-centered interaction flows."
-        ]
-      },
-      technicalDrawings: {
-        title: "Technical Drawings + Process",
-        category: "Technical / Revit / Drawings",
-        folder: "assets/technical-drawings-process",
-        description:
-          "Plans, sections, diagrams, and documentation studies showing design intent, coordination logic, and technical growth across academic and professional work.",
-        images: [
-          "assets/project-thumbnails/technical-drawings-process.svg",
-          "assets/project-thumbnails/technical-drawings-process.svg",
-          "assets/project-thumbnails/technical-drawings-process.svg"
-        ],
-        captions: [
-          "Plan logic: organizing spatial intent through clear drawing structure.",
-          "Section and detail study: technical communication and construction reasoning.",
-          "Process sheet: diagrams, annotations, and documentation discipline."
+          "Mood-based entry points and emotional reset pathways."
         ]
       }
     };
