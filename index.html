@@ -641,17 +641,37 @@
 
     .hero-visual {
       position: relative;
+      display: block;
+      width: 100%;
       min-height: 650px;
       overflow: hidden;
       border: 1px solid rgba(21, 17, 15, 0.12);
       border-radius: 42px;
+      padding: 0;
       background:
         linear-gradient(135deg, rgba(17, 26, 35, 0.18), rgba(17, 26, 35, 0.83)),
         url("assets/hero-project.jpg");
       background-size: cover;
       background-position: center;
       box-shadow: var(--shadow);
+      color: inherit;
+      cursor: pointer;
+      font: inherit;
       isolation: isolate;
+      text-align: left;
+      transition: transform 190ms ease, border-color 190ms ease, box-shadow 190ms ease;
+      appearance: none;
+    }
+
+    .hero-visual:hover {
+      transform: translateY(-4px);
+      border-color: rgba(160, 79, 55, 0.34);
+      box-shadow: 0 30px 70px rgba(45, 32, 22, 0.22);
+    }
+
+    .hero-visual:focus-visible {
+      outline: 3px solid rgba(160, 79, 55, 0.45);
+      outline-offset: 5px;
     }
 
     .hero-visual::before {
@@ -827,10 +847,38 @@
       padding-top: 80px;
     }
 
-    .philosophy-section h2 {
+    .philosophy-intro {
       position: sticky;
       top: 112px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .philosophy-intro h2 {
       color: rgba(21, 17, 15, 0.88);
+    }
+
+    .philosophy-photo {
+      overflow: hidden;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: var(--radius-xl);
+      background: rgba(255, 250, 241, 0.68);
+      box-shadow: var(--shadow);
+    }
+
+    .philosophy-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 45%;
+    }
+
+    .philosophy-photo figcaption {
+      padding: 16px 18px 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
 
     .philosophy-body {
@@ -1783,7 +1831,7 @@
         grid-template-columns: 1fr;
       }
 
-      .philosophy-section h2 {
+      .philosophy-intro {
         position: static;
       }
 
@@ -2099,12 +2147,12 @@
         </div>
       </div>
 
-      <aside class="hero-visual reveal" aria-label="Featured architecture project image">
+      <button class="hero-visual reveal" type="button" data-project="ecs" aria-label="Open ECS project gallery">
         <div class="hero-note">
           <small>Featured thesis system</small>
           <h2>Ecological Cooling Shores, a nocturnal edge where the city exhales.</h2>
         </div>
-      </aside>
+      </button>
     </section>
 
     <section id="about" class="shell section">
@@ -2298,7 +2346,13 @@
     </section>
 
     <section id="philosophy" class="shell section philosophy-section">
-      <h2 class="reveal">Design Philosophy</h2>
+      <div class="philosophy-intro reveal">
+        <h2>Design Philosophy</h2>
+        <figure class="philosophy-photo">
+          <img src="assets/philosophy-portrait.jpg" alt="Lekha More graduation portrait at Arizona State University" loading="lazy" />
+          <figcaption>Mumbai to Tempe, carrying questions of memory, climate, and belonging into architectural work.</figcaption>
+        </figure>
+      </div>
 
       <div class="philosophy-body">
         <h3 class="reveal">Architecture should listen before it speaks.</h3>
@@ -2695,7 +2749,31 @@
           "assets/ecs/04.jpg",
           "assets/ecs/05.jpg",
           "assets/ecs/06.jpg",
-          "assets/ecs/07.jpg"
+          "assets/ecs/07.jpg",
+          "assets/ecs/08.png",
+          "assets/ecs/09.png",
+          "assets/ecs/10.png",
+          "assets/ecs/11.png",
+          "assets/ecs/12.png",
+          "assets/ecs/13.png",
+          "assets/ecs/14.png",
+          "assets/ecs/15.png",
+          "assets/ecs/16.png",
+          "assets/ecs/17.png",
+          "assets/ecs/18.png",
+          "assets/ecs/19.png",
+          "assets/ecs/20.png",
+          "assets/ecs/21.png",
+          "assets/ecs/22.png",
+          "assets/ecs/23.png",
+          "assets/ecs/24.png",
+          "assets/ecs/25.png",
+          "assets/ecs/26.png",
+          "assets/ecs/27.png",
+          "assets/ecs/28.png",
+          "assets/ecs/29.png",
+          "assets/ecs/30.png",
+          "assets/ecs/31.png"
         ],
         captions: [
           "Nocturnal shoreline architecture along the Salt River corridor.",
@@ -2704,7 +2782,31 @@
           "Inhabitable edges between city and river ecology.",
           "Tensile filtering layers and night-sensitive illumination.",
           "Public cooling moments shaped for the Phoenix river corridor.",
-          "Phoenix, heat, darkness, and care as design arguments."
+          "Phoenix, heat, darkness, and care as design arguments.",
+          "Night exterior study showing the ECS arched residential modules under the protective canopy.",
+          "Nocturnal urban edge study with repeated ECS modules and controlled low-level lighting.",
+          "Long view of the modular shoreline system arranged along the dark river corridor.",
+          "Moonlit pedestrian edge showing the arched canopy, structural ribs, and illuminated threshold.",
+          "Central night view framing the ECS units, ecological planting, and shared exterior spaces.",
+          "Linear night perspective of the repeated modules and shaded public circulation.",
+          "Courtyard night view between ECS units, desert planting, and warm interior light.",
+          "Aerial night study of the modular sequence and shoreline lighting strategy.",
+          "Close-up of the arched unit, translucent roof layer, and sheltered balcony condition.",
+          "Exterior detail of the ECS roof canopy and moonlit facade system.",
+          "Close architectural view of the glowing arched facade and layered roof structure.",
+          "ECS sectional atmosphere showing residential interiors, balcony edges, and canopy enclosure.",
+          "Front-facing nocturnal courtyard view centered on the shared ecological spine.",
+          "Daylight view of the ECS modules, desert planting, and shaded public ground plane.",
+          "Night ecological courtyard with desert planting, warm interiors, and protected pedestrian space.",
+          "Side view of the arched canopy system, planting, and moonlit exterior corridor.",
+          "Daylight facade study showing arched residential fronts and shaded landscape edges.",
+          "Night campus view looking upward between ECS modules, planting, and star-filled sky.",
+          "Interior night view of material warmth, stone texture, and framed exterior darkness.",
+          "Bright interior-facing study of the arched windows and canopy reflections.",
+          "Wide moonlit view of repeated ECS modules, lighting pools, and dark thresholds.",
+          "Daylight interior and facade study with layered roof protection and shadow.",
+          "Courtyard night scene emphasizing desert planting, warm windows, and human-scale thresholds.",
+          "Daylight elevation-like view of paired modules, planting, and shaded communal space."
         ]
       },
       colony518: {
