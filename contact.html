@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lekha More | Contact Card</title>
+  <meta name="description" content="Digital contact card for Lekha More, architectural designer, researcher, writer, and visual storyteller." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <style>
+    :root {
+      --paper: #f6efe3;
+      --paper-deep: #eadcc8;
+      --ink: #15110f;
+      --text: #332b26;
+      --muted: #74685f;
+      --line: rgba(21, 17, 15, 0.16);
+      --terracotta: #964d34;
+      --night: #111a23;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow: 0 28px 80px rgba(45, 32, 22, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(215, 174, 109, 0.35), transparent 28%),
+        radial-gradient(circle at 86% 6%, rgba(31, 83, 98, 0.16), transparent 30%),
+        linear-gradient(135deg, var(--paper), var(--paper-deep));
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .card {
+      width: min(680px, 100%);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(255, 250, 241, 0.76);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      padding: clamp(28px, 7vw, 56px);
+      background:
+        radial-gradient(circle at 82% 0%, rgba(215, 174, 109, 0.34), transparent 34%),
+        rgba(255, 250, 241, 0.64);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 12px 30px rgba(45, 32, 22, 0.10);
+    }
+
+    .eyebrow {
+      color: var(--terracotta);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 13vw, 6.4rem);
+      font-weight: 500;
+      line-height: 0.88;
+      letter-spacing: -0.06em;
+    }
+
+    .role {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .links {
+      display: grid;
+      gap: 10px;
+      padding: clamp(18px, 4vw, 28px);
+    }
+
+    .link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid rgba(21, 17, 15, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.42);
+      padding: 16px 18px;
+      transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+    }
+
+    .link:hover,
+    .link:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(255, 250, 241, 0.92);
+      box-shadow: 0 16px 38px rgba(45, 32, 22, 0.10);
+      outline: none;
+    }
+
+    .link small {
+      color: var(--terracotta);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .link strong {
+      color: var(--text);
+      font-size: 1rem;
+      word-break: break-word;
+      text-align: right;
+    }
+
+    .primary {
+      border-color: var(--night);
+      background: var(--night);
+      color: var(--paper);
+    }
+
+    .primary small,
+    .primary strong {
+      color: var(--paper);
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 14px;
+      }
+
+      .card {
+        border-radius: 24px;
+      }
+
+      .link {
+        display: grid;
+        gap: 4px;
+      }
+
+      .link strong {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Lekha More digital contact card">
+    <section class="hero">
+      <div class="brand">
+        <img src="assets/nav-logo.png" alt="" />
+        <div>
+          <div class="eyebrow">Digital Contact Card</div>
+          <p>Architecture + Climate</p>
+        </div>
+      </div>
+
+      <div>
+        <h1>Lekha More</h1>
+        <p class="role">Architectural designer, researcher, writer, and visual storyteller based in Tempe, Arizona.</p>
+      </div>
+    </section>
+
+    <section class="links">
+      <a class="link primary" href="assets/Lekha-More.vcf" download>
+        <small>Save Contact</small>
+        <strong>Download vCard</strong>
+      </a>
+
+      <a class="link" href="mailto:lekhamore@gmail.com">
+        <small>Email</small>
+        <strong>lekhamore@gmail.com</strong>
+      </a>
+
+      <a class="link" href="https://www.linkedin.com/in/lekha-more/" target="_blank" rel="noreferrer">
+        <small>LinkedIn</small>
+        <strong>linkedin.com/in/lekha-more</strong>
+      </a>
+
+      <a class="link" href="https://www.behance.net/lekhamore" target="_blank" rel="noreferrer">
+        <small>Behance</small>
+        <strong>behance.net/lekhamore</strong>
+      </a>
+
+      <a class="link" href="https://lekhamore.github.io/" target="_blank" rel="noreferrer">
+        <small>Portfolio</small>
+        <strong>lekhamore.github.io</strong>
+      </a>
+
+      <a class="link" href="assets/Lekha-More-Resume.pdf" target="_blank" rel="noreferrer">
+        <small>Resume</small>
+        <strong>Open PDF resume</strong>
+      </a>
+    </section>
+  </main>
+</body>
+</html>
