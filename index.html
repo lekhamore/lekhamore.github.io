@@ -229,6 +229,47 @@
       grid-column: span 12;
     }
 
+    .gallery-image-button {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: zoom-in;
+    }
+
+    .gallery-image-button::after {
+      content: "View full screen";
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 8px 11px;
+      border: 1px solid rgba(255, 247, 232, 0.22);
+      border-radius: 999px;
+      background: rgba(21, 17, 15, 0.74);
+      color: #fff7e8;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      opacity: 0;
+      text-transform: uppercase;
+      transform: translateY(6px);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .gallery-image-button:hover::after,
+    .gallery-image-button:focus-visible::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-image-button:focus-visible {
+      outline: 3px solid rgba(215, 174, 109, 0.78);
+      outline-offset: -3px;
+    }
+
     .project-gallery img {
       width: 100%;
       height: auto;
@@ -243,6 +284,90 @@
       color: rgba(255, 247, 232, 0.76);
       font-size: 0.88rem;
       line-height: 1.45;
+    }
+
+    .image-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: none;
+      place-items: center;
+      padding: clamp(14px, 3vw, 34px);
+      background: rgba(9, 7, 6, 0.94);
+      backdrop-filter: blur(20px);
+    }
+
+    .image-lightbox.active {
+      display: grid;
+    }
+
+    .image-lightbox-inner {
+      width: min(1420px, 100%);
+      max-height: calc(100vh - clamp(28px, 6vw, 68px));
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: 18px;
+    }
+
+    .image-lightbox-media {
+      min-height: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .image-lightbox-media img {
+      max-width: 100%;
+      max-height: calc(100vh - 190px);
+      width: auto;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+    }
+
+    .image-lightbox-caption {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      padding: 16px 18px;
+      border: 1px solid rgba(255, 247, 232, 0.14);
+      border-radius: 16px;
+      background: rgba(21, 17, 15, 0.72);
+      color: rgba(255, 247, 232, 0.82);
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    .image-lightbox-caption strong {
+      display: block;
+      margin-bottom: 5px;
+      color: #fff7e8;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .close-lightbox {
+      position: fixed;
+      top: clamp(18px, 3vw, 34px);
+      right: clamp(18px, 3vw, 38px);
+      z-index: 1;
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 247, 232, 0.28);
+      border-radius: 50%;
+      background: rgba(255, 247, 232, 0.1);
+      color: #fff7e8;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .close-lightbox:hover,
+    .close-lightbox:focus-visible {
+      transform: scale(1.05);
+      background: rgba(255, 247, 232, 0.18);
+      outline: none;
     }
 
     :root {
@@ -2127,6 +2252,25 @@
         min-height: 280px;
       }
 
+      .image-lightbox {
+        padding: 12px;
+      }
+
+      .image-lightbox-inner {
+        gap: 12px;
+      }
+
+      .image-lightbox-media img {
+        max-height: calc(100vh - 180px);
+        border-radius: 8px;
+      }
+
+      .image-lightbox-caption {
+        padding: 13px 14px;
+        font-size: 0.86rem;
+        text-align: left;
+      }
+
       .article-card {
         min-height: 260px;
       }
@@ -2452,13 +2596,13 @@
 
         <button class="project reveal" type="button" data-project="quickFixMind">
           <div class="project-image">
-            <img src="assets/project-thumbnails/quick-fix-mind.svg" alt="Quick Fix Mind UI/UX project thumbnail" loading="lazy" />
+            <img src="assets/quick-fix-mind/05.png" alt="Quick Fix Mind emotion-selection prototype screens" loading="lazy" />
           </div>
           <div class="project-content">
             <span class="project-subtitle">Fall 2025 · Arizona State University</span>
             <h3>Quick Fix Mind</h3>
-            <span class="project-type">UI/UX design · Mental wellness app</span>
-            <p>Quick Fix Mind is a UI/UX project designed around emotional reset, mood-based interaction, and quick mental wellness interventions through simple digital pathways.</p>
+            <span class="project-type">UI/UX design · Mental wellness app · Usability evaluation</span>
+            <p>Quick Fix Mind is a high-fidelity mental wellness prototype shaped through heuristic evaluation and cognitive walkthroughs to reduce cognitive load during emotional distress.</p>
             <span class="project-open">View Quick Fix Mind <svg class="icon small" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></span>
           </div>
         </button>
@@ -2845,6 +2989,16 @@
     </div>
   </div>
 
+  <div class="image-lightbox" id="imageLightbox" aria-hidden="true">
+    <button class="close-lightbox" id="closeLightbox" type="button" aria-label="Close full-screen image"><svg class="icon" aria-hidden="true"><use href="#icon-x"></use></svg></button>
+    <div class="image-lightbox-inner" role="dialog" aria-modal="true" aria-labelledby="lightboxProject" aria-describedby="lightboxCaption">
+      <div class="image-lightbox-media">
+        <img id="lightboxImage" src="" alt="" />
+      </div>
+      <p class="image-lightbox-caption" id="lightboxCaption"><strong id="lightboxProject"></strong><span id="lightboxCaptionText"></span></p>
+    </div>
+  </div>
+
   <footer>
     <div class="shell footer-inner">
       <span>© <span id="year"></span> Lekha More. Architecture, climate, and spatial storytelling.</span>
@@ -3061,15 +3215,31 @@
       },
       quickFixMind: {
         title: "Quick Fix Mind",
-        category: "UI/UX design / Mental wellness app",
+        category: "UI/UX design / Mental wellness app / Usability evaluation",
         folder: "assets/quick-fix-mind",
         description:
-          "Quick Fix Mind is a UI/UX project designed around emotional reset, mood-based interaction, and quick mental wellness interventions through simple digital pathways.",
+          "Quick Fix Mind is a high-fidelity mental wellness app prototype designed around fast emotional reset, mood-based interaction, Reframe, Mindfulness, Share, and Track. The Week 14 evaluation combined Nielsen heuristic evaluation with a cognitive walkthrough, revealing that emotionally overwhelmed users need immediate clarity, lighter microcopy, stronger visual hierarchy, and predictable actions.",
         images: [
-          "assets/project-thumbnails/quick-fix-mind.svg"
+          "assets/quick-fix-mind/05.png",
+          "assets/quick-fix-mind/06.png",
+          "assets/quick-fix-mind/07.png",
+          "assets/quick-fix-mind/08.png",
+          "assets/quick-fix-mind/09.png",
+          "assets/quick-fix-mind/01.png",
+          "assets/quick-fix-mind/02.png",
+          "assets/quick-fix-mind/03.png",
+          "assets/quick-fix-mind/04.png"
         ],
         captions: [
-          "Mood-based entry points and emotional reset pathways."
+          "Emotion selection screens organize positive, neutral, and negative states into visual categories, creating the entry point for mood-based intervention pathways.",
+          "Reframe & Regulate prototype flow showing the redesigned instructional sequence: explanation, guided prompt, example state, and loading feedback.",
+          "Mindfulness screens show a shift from long explanatory copy toward step-based techniques such as Observe, Describe, Participate, Wise Mind, and Compassion Meditation.",
+          "Shared States screens explore how emotional status can be shared with trusted friends through clearer states such as Looking for Chat, Needs Comfort, and Just Being.",
+          "Reframe loading-state variations test motion and feedback while the app processes the user's written emotional truth.",
+          "Heuristic evaluation notes for the emotion-selection screen: evaluators identified low visual hierarchy and recommended stronger contrast, spacing, and category emphasis.",
+          "Heuristic evaluation notes for Reframe: participants were unsure what to type, so the redesign needed example text, prompts, placeholders, and onboarding microcopy.",
+          "Heuristic evaluation notes for Mindfulness and Fast Reset: dense text created cognitive overload, pointing toward step-wise structure and clearer primary actions.",
+          "Heuristic evaluation notes for Share and Track: participants needed confirmation screens, legends, sample data, labels, and one-sentence explanations for trust and predictability."
         ]
       }
     };
@@ -3080,9 +3250,43 @@
     const modalCategory = document.getElementById("modalCategory");
     const modalDescription = document.getElementById("modalDescription");
     const projectGallery = document.getElementById("projectGallery");
+    const imageLightbox = document.getElementById("imageLightbox");
+    const closeLightbox = document.getElementById("closeLightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxProject = document.getElementById("lightboxProject");
+    const lightboxCaptionText = document.getElementById("lightboxCaptionText");
     let lastFocusedProject = null;
+    let lastFocusedGalleryImage = null;
+
+    const closeImageLightbox = () => {
+      imageLightbox.classList.remove("active");
+      imageLightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.removeAttribute("src");
+      lightboxImage.alt = "";
+      if (!modal.classList.contains("active")) {
+        document.body.style.overflow = "";
+      }
+      if (lastFocusedGalleryImage) {
+        lastFocusedGalleryImage.focus();
+      }
+    };
+
+    const openImageLightbox = ({ imageSrc, imageAlt, caption, projectTitle, trigger }) => {
+      lastFocusedGalleryImage = trigger;
+      lightboxImage.src = imageSrc;
+      lightboxImage.alt = imageAlt;
+      lightboxProject.textContent = projectTitle;
+      lightboxCaptionText.textContent = caption || "Project image.";
+      imageLightbox.classList.add("active");
+      imageLightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      closeLightbox.focus();
+    };
 
     const closeProjectModal = () => {
+      if (imageLightbox.classList.contains("active")) {
+        closeImageLightbox();
+      }
       modal.classList.remove("active");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
@@ -3104,14 +3308,30 @@
       if (project.images.length) {
         project.images.forEach((imageSrc, index) => {
           const figure = document.createElement("figure");
+          const imageButton = document.createElement("button");
           const img = document.createElement("img");
+          const captionText = project.captions?.[index] || "";
+          const imageAlt = `${project.title} image ${index + 1}`;
+          imageButton.className = "gallery-image-button";
+          imageButton.type = "button";
+          imageButton.setAttribute("aria-label", `Open ${project.title} image ${index + 1} full screen`);
           img.src = imageSrc;
-          img.alt = `${project.title} image ${index + 1}`;
+          img.alt = imageAlt;
           img.loading = index === 0 ? "eager" : "lazy";
-          figure.appendChild(img);
-          if (project.captions?.[index]) {
+          imageButton.appendChild(img);
+          imageButton.addEventListener("click", () => {
+            openImageLightbox({
+              imageSrc,
+              imageAlt,
+              caption: captionText,
+              projectTitle: project.title,
+              trigger: imageButton
+            });
+          });
+          figure.appendChild(imageButton);
+          if (captionText) {
             const caption = document.createElement("figcaption");
-            caption.textContent = project.captions[index];
+            caption.textContent = captionText;
             figure.appendChild(caption);
           }
           projectGallery.appendChild(figure);
@@ -3131,6 +3351,13 @@
     });
 
     closeModal.addEventListener("click", closeProjectModal);
+    closeLightbox.addEventListener("click", closeImageLightbox);
+
+    imageLightbox.addEventListener("click", (event) => {
+      if (event.target === imageLightbox) {
+        closeImageLightbox();
+      }
+    });
 
     modal.addEventListener("click", (event) => {
       if (event.target === modal) {
@@ -3139,6 +3366,10 @@
     });
 
     document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && imageLightbox.classList.contains("active")) {
+        closeImageLightbox();
+        return;
+      }
       if (event.key === "Escape" && modal.classList.contains("active")) {
         closeProjectModal();
       }
